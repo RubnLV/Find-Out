@@ -88,7 +88,7 @@ export default function FormLogin() {
                                     required="required"
                                     ref={refUsuario}
                                 />
-                                <label htmlFor="floatingInput">Usuario</label>
+                                <label htmlFor="floatingInput">&nbsp;Usuario</label>
                             </Col>
                             <Col xl={8} className="form-floating mb-3">
                                 <input
@@ -101,7 +101,7 @@ export default function FormLogin() {
                                     required="required"
                                     ref={refClave}
                                 />
-                                <label htmlFor="floatingPassword">Contraseña</label>
+                                <label htmlFor="floatingPassword">&nbsp;Contraseña</label>
                             </Col>
                             <Col xl={8} className="mb-3 d-grid">
                             <button

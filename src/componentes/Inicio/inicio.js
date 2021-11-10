@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { Container, Row,} from 'react-bootstrap';
+import { Container, Row, Button} from 'react-bootstrap';
 import { useHistory } from "react-router";
-
 import {borraToken, getToken, validaToken} from "../hooks/funciones";
-import Mapa from "../Mapa/mapa"
 
-import Menu from './../Menu/NavBar';
+import Lugares from "../Lugares/lugares"
+import Menu from "./../Menu/NavBar";
+import "./estilosInicio.scss"
 
 export default function Inicio() {
     const history = useHistory();
@@ -26,7 +26,7 @@ export default function Inicio() {
     
     return (
         
-        <Container>
+        <Container fluid>
             <Row>
                 <Menu />
             </Row>
@@ -37,8 +37,16 @@ export default function Inicio() {
                 <h1>
                     Inicio
                 </h1>
-                <Mapa />
+                <Lugares />
             </Row>
+            
+            <Button 
+            variant="outline-dark"
+            className="nuevoLugar"
+            onClick={() => history.push('/Nuevo-Lugar')}
+            >
+                Añadir Lugar
+            </Button>
         </Container>
     )
 }
