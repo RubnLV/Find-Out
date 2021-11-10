@@ -1,0 +1,89 @@
+.NavBar {
+    background-color: #181818;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    opacity: 0.9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    nav{
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li{
+                display: inline-block;
+                margin: 1.5vw;
+                a{
+                    display: block;
+                    text-decoration: none;
+                    color: #fff;
+                    &:hover{
+                        transition: 0.5s ease;
+                        //border-bottom: 2px solid #fff;
+                        color: mediumturquoise;
+                    }
+                    &.active{
+                        color: mediumturquoise;
+                    }
+                }
+            }
+        }
+    }
+    .MobilMenu{
+        display: none;
+        background-color: crimson;
+        align-items: center;
+        
+        .MenuIcon{
+            //size: 50px;
+            color: #fff;
+            position: absolute;
+            right: 4%;
+            cursor: pointer;
+        }
+    }
+
+}
+
+.logo{
+    width: 70px;
+    padding-left: 10%;
+}
+
+@media screen  and (max-width: 650px){
+    .NavBar {
+        .Menu{
+            display: none;
+        }
+        .MobilMenu{
+            display: flex;
+            
+            ul{
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                right: 0;
+                top: 80px;
+                width: 100vw;
+                //height: 100vh;
+                background-color: #181818;
+                border-top: 5px solid #fff;
+                
+                li{                   
+                    a{
+                        padding-left: 10%;
+                        &:hover{
+                            color: mediumturquoise;
+                            border-bottom: none;
+                            margin-left: 0.7%;
+                            transition: all 0.3s ease-in;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

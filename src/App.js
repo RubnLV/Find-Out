@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Container, Row, Col, Button } from "react-bootstrap";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
+//import Login from './componentes/Login/login';
+import FormLogin from './componentes/Login/formLogin';
+import Registro from './componentes/AltaUsuario/altaUsuario'
+import Inicio from './componentes/Inicio/inicio';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid>
+        <Router>
+        <Switch>
+          <Route path="/Login" exact={true}>
+            <FormLogin />
+          </Route>
+          <Route path="/Registro" exact={true}>
+            <Registro />
+          </Route>
+          <Route path="/" exact={true}>
+            <Inicio />
+          </Route>
+          </Switch>
+        </Router>
+      
+    </Container>
   );
 }
 
