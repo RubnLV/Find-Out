@@ -7,13 +7,13 @@ export function validaDatosLogin(props) {
     var mensaje = {};
 
     //nombre
-    if (usuario === null) {
+    if (usuario == null) {
         //alert('usuario vacio');
         mensaje['valido'] = false;
         mensaje['mensaje'] = "El usuario no puede estar vacio";
         return mensaje;
     } else {
-        if (exRegUsu.test(usuario) === false) {
+        if (exRegUsu.test(usuario) == false) {
             //alert('El nombre del usuario no es valido, debe ser alfanumerico');
             mensaje['valido'] = false;
             mensaje['mensaje'] = "El usuario solo debe contener mayusculas, minusculas, numeros y guion bajo";
@@ -26,12 +26,12 @@ export function validaDatosLogin(props) {
         }
     }
     //clave
-    if (clave === null) {
+    if (clave == null) {
         mensaje['valido'] = false;
         mensaje['mensaje'] = "La contraseña no puede estar vacia";
         return mensaje;
     } else {
-        if (exRegPwd.test(clave) === false) {
+        if (exRegPwd.test(clave) == false) {
             //alert('la contraseña, debe ser alfanumerica');
             mensaje['valido'] = false;
             mensaje['mensaje'] = "La clave contiene caracteres no validos";

@@ -32,16 +32,17 @@ export default function AltaUsuario() {
         //validacion
         const datosValidados = validaDatosRegistro(datos);
         console.log(datosValidados);
-        //creamos opciones de envio
-        const opciones = {
-            method: 'POST',
-            body: JSON.stringify(datos),
-            headers: {
-                'Accept': 'application/json',
-                'Content-type': 'application/json'
-            }
-        };
+        
         if (datosValidados.valido) {
+            //creamos opciones de envio
+            const opciones = {
+                method: 'POST',
+                body: JSON.stringify(datos),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json'
+                }
+            };
             const datosServ = await enviaDatos(URL_CONTROLADOR, opciones);
             console.log(datosServ);
             if (datosServ.conectado) {

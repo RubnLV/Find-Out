@@ -22,19 +22,19 @@ export default function FormLogin() {
         }
         //valida datos
         var datosValidados = validaDatosLogin(datos);
-        //creamos opciones de envio
-        const opciones = {
-            method: 'POST',
-            body: JSON.stringify(datos),
-            headers: {
-                'Accept': 'application/json',
-                'Content-type': 'application/json'
-            }
-        };
         //console.log(opciones);
         //acciones despues de validar los datos en el cliente
         console.log(datosValidados);
         if (datosValidados.valido) {
+            //creamos opciones de envio
+            const opciones = {
+                method: 'POST',
+                body: JSON.stringify(datos),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json'
+                }
+            };
             const datosServ = await enviaDatos(URL_CONTROLADOR, opciones);
             console.log(datosServ);
             if (datosServ.conectado) {

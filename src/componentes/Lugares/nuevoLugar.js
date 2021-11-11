@@ -1,5 +1,8 @@
+import Button from "@restart/ui/esm/Button";
 import React, { useRef, useEffect, useState } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
+
+import{validaDatosLugar} from "./validacionFormLugar";
 
 export default function NuevoLugar(){
 
@@ -9,9 +12,34 @@ export default function NuevoLugar(){
     const refCategoria = useRef(null);
     const refFileInput = useRef(null);
 
+    const [imagen, setImagen] = useState(null)
+    const [preview, setPreview] = useState(null)
+
     const [mensaje, setMensajes] = useState('');
     const [error, setError] = useState(false);
 
+    const handleChangeImagen = (e) => {
+        if (!e.target.files || e.target.files.length === 0) {
+            setImagen(undefined)
+            return
+        }
+
+        // I've kept this example simple by using the first image instead of multiple
+        setImagen(e.target.files[0])
+    }
+
+    useEffect(() => {
+        if (!imagen) {
+            setImagen(undefined)
+            return
+        }
+
+        const objectUrl = URL.createObjectURL(imagen)
+        setPreview(objectUrl)
+
+        // free memory when ever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl)
+    }, [imagen])
 
     const handleNuevoLugar = async (e) => {
         e.preventDefault();
@@ -20,12 +48,14 @@ export default function NuevoLugar(){
             "lugar": refLugar.current.value,
             "direccion": refDireccion.current.value,
             "descripcion": refDescripcion.current.value,
-            "categoria_id": refCategoria.current.value
+            "categoria_id": refCategoria.current.value,
+            "imagen": imagen
 
         }
         console.log(datos);
         //valida datos
-        
+        var datosValidados = validaDatosLugar(datos);
+        console.log(datosValidados);
         //creamos opciones de envio
         const opciones = {
             method: 'POST',
@@ -97,16 +127,19 @@ export default function NuevoLugar(){
                                     placeholder="Descripcion"
                                     id="floatingTextarea2"
                                     style={{ height: '100px' }}
+                                    maxLength="500"
+                                    required="required"
                                     ref={refDescripcion}
                                 />
-                                <label htmlFor="floatingTextarea2">Descripción</label>
+                                <label htmlFor="floatingTextarea2">&nbsp;Descripción</label>
                             </Col>
                             <Col xl={12} className="form-floating mb-3">
                                 <p>Elige una Categoria</p>
                                 <select 
                                 className="form-select"
-                                style={{padding: "10px 15px"}} 
+                                style={{padding: "10px 15px", fontSize: "0.9em"}} 
                                 id="inputGroupSelect01"
+                                required="required"
                                 ref={refCategoria}
                                 >
                                     <option selected>Categoria ...</option>
@@ -122,17 +155,32 @@ export default function NuevoLugar(){
                                     className="control"
                                     type="file"
                                     id="formFile"
+                                    accept="image/png,image/jpeg"
+                                    onChange={handleChangeImagen}
                                 />
-
                             </Col>
+                            {
+                                imagen &&
+                                <Col xl={12} className="form-floating mb-3">
+                                    <img src={preview} alt="Imagen" />
+                                    <Button 
+                                    variant="warning"
+                                    className="d-block btn btn-warning"
+                                    onClick={() => setImagen(null)}
+                                    >
+                                        Eliminar Imagen
+                                    </Button>
+                                </Col>
+                            }
+                            
                             <Col xl={8} className="mb-3 d-grid">
-                            <button
+                            <Button
                                 name="guardarLugar"
                                 type="submit"
                                 className="btn btn-primary "
                             >
                                 Guardar
-                            </button>
+                            </Button>
                             </Col> 
                         </Row>
                     </form>
