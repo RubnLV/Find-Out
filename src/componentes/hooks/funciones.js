@@ -39,3 +39,11 @@ export async function enviaDatos (url, opciones) {
     //console.log(json);
     return json;
 }
+
+export async function enviaLugar (url, opciones) {  
+    //creamos una funcion asincrona
+    const res = await fetch(url, opciones); // guardamos el resultado que nos devuelve fetch
+    const data = await res.text(); // el resultado lo convertimos a un json
+    //console.log(json);
+    return data;
+}

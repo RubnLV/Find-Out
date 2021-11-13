@@ -3,6 +3,9 @@ import React, { useRef, useEffect, useState } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 
 import{validaDatosLugar} from "./validacionFormLugar";
+import { enviaDatos } from "../hooks/funciones";
+
+const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_guardaLugar.php';
 
 export default function NuevoLugar(){
 
@@ -23,8 +26,6 @@ export default function NuevoLugar(){
             setImagen(undefined)
             return
         }
-
-        // I've kept this example simple by using the first image instead of multiple
         setImagen(e.target.files[0])
     }
 
@@ -33,11 +34,9 @@ export default function NuevoLugar(){
             setImagen(undefined)
             return
         }
-
         const objectUrl = URL.createObjectURL(imagen)
         setPreview(objectUrl)
 
-        // free memory when ever this component is unmounted
         return () => URL.revokeObjectURL(objectUrl)
     }, [imagen])
 
@@ -57,43 +56,42 @@ export default function NuevoLugar(){
         var datosValidados = validaDatosLugar(datos);
         console.log(datosValidados);
         //creamos opciones de envio
+        var form = document.getElementById("formLogin");
         const opciones = {
             method: 'POST',
-            body: JSON.stringify(datos),
-            headers: {
-                'Accept': 'application/json',
-                'Content-type': 'application/json'
-            }
+            body: new FormData(form)
+            
         };
-        //console.log(opciones);
+        console.log(opciones);
         //acciones despues de validar los datos en el cliente
         // console.log(datosValidados);
-        // if (datosValidados.valido) {
-        //     const datosServ = await enviaDatos(URL_CONTROLADOR, opciones);
-        //     console.log(datosServ);
-        //     if (datosServ.conectado) {
-        //         const objLS = {
-        //             "tkn": datosServ.token,
-        //             "time": new Date()
-        //         }
-        //         setToken(objLS);
-        //         history.push('/')
-        //     }else{
-        //         setMensajes(datosServ.mensaje);
-        //         setError(true);
-        //     }  
-        // }else{
-        //     setMensajes(datosValidados.mensaje);
-        //     setError(true);
-        // }
+        if (datosValidados.valido) {
+            const datosServ = await enviaDatos(URL_CONTROLADOR, opciones);
+            console.log(datosServ);
+            // if (datosServ.conectado) {
+            //     history.push('/')
+            // }else{
+            //     setMensajes(datosServ.mensaje);
+            //     setError(true);
+            // } 
+
+        }else{
+            // setMensajes(datosValidados.mensaje);
+            // setError(true);
+            console.log('error al recibir info del php');
+        }
     }
 
     return(
         <Container className=" align-middle p-4">
             <Row className="justify-content-center border border-4 rounded">
                 <Col md={8}>
-                    <form name="formLogin"
-                        className="container-fluid " onSubmit={handleNuevoLugar}>
+                    <form 
+                    name="formLogin"
+                    id="formLogin"
+                        className="container-fluid "
+                         onSubmit={handleNuevoLugar}
+                         >
                         <Row xl={8} className="jalign-items-center mt-5">
                             <Col xl={12} className="form-floating mb-3">
                                 <input
@@ -154,7 +152,8 @@ export default function NuevoLugar(){
                                 <input
                                     className="control"
                                     type="file"
-                                    id="formFile"
+                                    id="imagen"
+                                    name="imagen"
                                     accept="image/png,image/jpeg"
                                     onChange={handleChangeImagen}
                                 />

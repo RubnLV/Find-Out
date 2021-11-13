@@ -1,7 +1,8 @@
 export function validaDatosLugar(props) {
-    debugger
+    //debugger
     const { lugar, direccion, descripcion, categoria_id, imagen } = props;
-    const exReg = /^[a-zA-Z]+[0-9]*$/;
+    //const exReg = /^[a-zA-Z]+[0-9]*$/;
+    const exRegText = /^[a-zA-Z0-9]+(\s[a-zA-Z0-9]*)*$/;
     const exRegImg = /\.(jpg|png)$/i;
     var mensaje = {};
 
@@ -11,7 +12,7 @@ export function validaDatosLugar(props) {
         mensaje['mensaje'] = "El Lugar no puede estar vacio";
         return mensaje;
     } else {
-        if (exReg.test(lugar) == false) {
+        if (exRegText.test(lugar) == false) {
             mensaje['valido'] = false;
             mensaje['mensaje'] = "Lugar solo debe contener mayusculas, minusculas y numeros";
             return mensaje;
@@ -27,7 +28,7 @@ export function validaDatosLugar(props) {
         mensaje['mensaje'] = "La dirección no puede estar vacia";
         return mensaje;
     } else {
-        if (exReg.test(direccion) == false) {
+        if (exRegText.test(direccion) == false) {
             mensaje['valido'] = false;
             mensaje['mensaje'] = "La dirección solo debe contener mayusculas, minusculas y numeros";
             return mensaje;
@@ -43,7 +44,7 @@ export function validaDatosLugar(props) {
         mensaje['mensaje'] = "La descripción no puede estar vacia";
         return mensaje;
     } else {
-        if (exReg.test(descripcion) == false) {
+        if (exRegText.test(descripcion) == false) {
             mensaje['valido'] = false;
             mensaje['mensaje'] = "La descripción solo puede contener mayusculas, minusculas y numeros";
             return mensaje;
