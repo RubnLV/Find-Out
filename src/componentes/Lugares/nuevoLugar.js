@@ -138,9 +138,10 @@ export default function NuevoLugar(){
                                 style={{padding: "10px 15px", fontSize: "0.9em"}} 
                                 id="inputGroupSelect01"
                                 required="required"
+                                defaultValue={0}
                                 ref={refCategoria}
                                 >
-                                    <option selected>Categoria ...</option>
+                                    <option value={0} >Seleccione una Categoria ...</option>
                                     <option value={1}>Spot</option>
                                     <option value={2}>Pubs</option>
                                     <option value={3}>Restaurante</option>
@@ -160,7 +161,7 @@ export default function NuevoLugar(){
                             </Col>
                             {
                                 imagen &&
-                                <Col xl={12} className="form-floating mb-3">
+                                <Col xl={12} className="form-floating img-thumbnail mb-3">
                                     <img src={preview} alt="Imagen" />
                                     <Button 
                                     variant="warning"

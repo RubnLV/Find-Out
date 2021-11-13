@@ -1,0 +1,59 @@
+.contenedorInicio{
+    background: rgb(10,21,55);
+    background: linear-gradient(180deg, rgba(10,21,55,1) 13%, rgba(253,187,45,1) 100%);
+    .barraSuperior{
+    //background-color: #0a1537;
+    width: 100vw;
+    height: 80px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.titulo{
+    display: flex;
+    color: #FFC300;
+    align-items: center;
+    font-size: 2em;
+
+}
+.login{
+    display: flex;
+    justify-content: center;
+    height: 100vh ;  
+    .divLogin{
+        //max-height: 350px !important;
+        display: flex;
+        margin-top: 80px;
+        vertical-align: middle;
+        flex-direction: column;
+        padding: 15px;
+    }
+}
+.btnEntrar {
+    color: #fff;
+    background-color: #0a1537;
+    border-color: #0a1537;
+    &:hover{
+        color: #FFC300 !important;
+        background-color: #0a1537c5;
+    }
+}
+.recuperaPwd{
+    color: #0a1537b0;
+    &:hover{
+        color: #0a1537;
+    }
+    &:focus{
+        color: #0a1537;
+    }
+}
+.btnRegistro{
+    color: #0a1537;
+    background-color: transparent;
+    border-color: #0a1537;
+    &:hover{    
+        color: #fff !important;
+        background-color: #0a1537;
+        border-color: #0a1537;
+    }
+}
+}

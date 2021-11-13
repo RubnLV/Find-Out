@@ -71,12 +71,6 @@ export function validaDatosLugar(props) {
         mensaje['valido'] = false;
         mensaje['mensaje'] = "El archivo adjunto no es una imagen, solo se aceptan archivos .png o .jpg";
         return mensaje;
-    } else {
-        if (imagen.size > 20000) {
-            mensaje['valido'] = false;
-            mensaje['mensaje'] = "El peso de la imagen no puede exceder los 200kb";
-            return mensaje;
-        }
     }
     mensaje['valido'] = true;
     mensaje['mensaje'] = null;

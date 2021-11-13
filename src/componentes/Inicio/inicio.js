@@ -42,7 +42,7 @@ export default function Inicio() {
             
             <Button 
             variant="outline-dark"
-            className="nuevoLugar"
+            className="btnnuevoLugar"
             onClick={() => history.push('/Nuevo-Lugar')}
             >
                 Añadir Lugar
