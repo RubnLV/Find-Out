@@ -13,9 +13,10 @@
     color: #FFC300;
     align-items: center;
     font-size: 2em;
+    padding-left: 40px;
 
 }
-.login{
+.contenedor{
     display: flex;
     justify-content: center;
     height: 100vh ;  
@@ -32,6 +33,7 @@
     color: #fff;
     background-color: #0a1537;
     border-color: #0a1537;
+    border: 2px;
     &:hover{
         color: #FFC300 !important;
         background-color: #0a1537c5;

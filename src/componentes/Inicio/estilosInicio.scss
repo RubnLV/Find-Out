@@ -1,6 +1,13 @@
-.btnnuevoLugar{
+.btnNuevoLugar{
     display: block;
     position: absolute;
     right: 10px;
     bottom: 10px;
+    color: #0a1537 !important;
+    background-color: transparent !important;
+    border-color: #0a1537 !important;
+    &:hover{
+        color: #FFC300 !important;
+        background-color: #0a1537 !important;
+    }
 }

@@ -1,13 +1,19 @@
 .NavBar {
-    background-color: #181818;
+    background-color: #0a1537;
     height: 80px;
     width: 100%;
-    position: fixed;
-    z-index: 100;
+    // position: fixed;
+    // z-index: 100;
     opacity: 0.9;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .enlaceTitulo{
+        text-decoration: none;
+        .titulo{
+        color: #FFC300;
+    }
+    }
     nav{
         ul{
             list-style: none;
@@ -20,13 +26,14 @@
                     display: block;
                     text-decoration: none;
                     color: #fff;
+                    font-size: 1.5em;
                     &:hover{
-                        transition: 0.5s ease;
+                        transition: 0.3s ease;
                         //border-bottom: 2px solid #fff;
-                        color: mediumturquoise;
+                        color: #FFC300;
                     }
                     &.active{
-                        color: mediumturquoise;
+                        color: #FFC300;
                     }
                 }
             }
@@ -34,12 +41,11 @@
     }
     .MobilMenu{
         display: none;
-        background-color: crimson;
         align-items: center;
         
         .MenuIcon{
             //size: 50px;
-            color: #fff;
+            color: #FFC300;
             position: absolute;
             right: 4%;
             cursor: pointer;
@@ -47,12 +53,10 @@
     }
 
 }
-
-.logo{
-    width: 70px;
-    padding-left: 10%;
-}
-
+// .logo{
+//     width: 70px;
+//     padding-left: 10%;
+// }
 @media screen  and (max-width: 650px){
     .NavBar {
         .Menu{
@@ -69,17 +73,17 @@
                 top: 80px;
                 width: 100vw;
                 //height: 100vh;
-                background-color: #181818;
-                border-top: 5px solid #fff;
+                background-color: #0a1537;
+                border-top: 5px solid #ffc4009d;
                 
                 li{                   
                     a{
-                        padding-left: 10%;
+                        padding-left: 5%;
                         &:hover{
-                            color: mediumturquoise;
+                            color: #FFC300;
                             border-bottom: none;
-                            margin-left: 0.7%;
-                            transition: all 0.3s ease-in;
+                            margin-left: 1%;
+                            transition: all 0.2s ease-in;
                         }
                     }
                 }

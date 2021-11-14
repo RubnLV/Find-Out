@@ -1,0 +1,44 @@
+.contenedor{
+    display: flex;
+    justify-content: center;
+    height: 100vh ;
+    padding: 0px !important;
+    .divLugar{
+        //max-height: 350px !important;
+        display: flex;
+        margin-top: 20px;
+        vertical-align: middle;
+        flex-direction: column;
+        padding: 15px;
+        border: 1px solid #0a1537;
+    }
+    .iptImagen{
+        display: none;
+    }
+    .lblImagen{
+        position: relative;
+        top: 0;
+        left: 0;
+        height: auto;
+        padding: 10px;
+        pointer-events: auto;
+        background-color: transparent;
+        border: 3px solid #0a1537;
+        border-radius: 5px;
+        &:hover{
+            cursor: pointer;
+            background-color: #0a1537;
+            color: #FFC300;
+        }
+    }
+    .btnGuardar {
+        color: #fff;
+        background-color: #0a1537c5;
+        border-color: #0a1537;
+        border: 2px;
+        &:hover{
+            color: #FFC300 !important;
+            background-color: #0a1537;
+        }
+    }
+}

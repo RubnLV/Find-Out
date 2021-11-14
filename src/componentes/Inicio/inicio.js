@@ -32,7 +32,7 @@ export default function Inicio() {
             </Row>
             <Row 
             style={{
-                marginTop: "80px"
+                marginTop: "20px"
             }}>
                 <h1>
                     Inicio
@@ -41,8 +41,7 @@ export default function Inicio() {
             </Row>
             
             <Button 
-            variant="outline-dark"
-            className="btnnuevoLugar"
+            className="btnNuevoLugar"
             onClick={() => history.push('/Nuevo-Lugar')}
             >
                 Añadir Lugar

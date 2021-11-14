@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { setToken, borraToken, getToken, validaToken, enviaDatos } from "../hooks/funciones";
 import { validaDatosLogin } from "./validaDatosLogin"
 
-import './estilosLogin.scss';
+import './../estilos/estilosLoginRegistro.scss';
 
 const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_login.php';
 
@@ -77,71 +77,71 @@ export default function FormLogin() {
             <Row className="barraSuperior">
                 <h3 className="titulo">Finf Out</h3>
             </Row>
-            <Row className="login">
+            <Row className="contenedor">
                 <Col lg={5} md={6} xs={9} >
                     <div className="border border-4 rounded divLogin">
-                    <Row>
-                        <form name="formLogin"
-                            className="container-fluid flex-column" onSubmit={handleLogin}>
-                            <Row className="jalign-items-center mt-4">
-                                <Col lg={12} md={12} xs={12}className="form-floating mb-3">
-                                    <input
-                                        name="username"
-                                        type="text"
-                                        className="form-control"
-                                        id="floatingInput"
-                                        placeholder="Login ..."
-                                        maxLength="30"
-                                        required="required"
-                                        ref={refUsuario}
-                                    />
-                                    <label htmlFor="floatingInput">&nbsp;Usuario</label>
+                        <Row>
+                            <form name="formLogin"
+                                className="container-fluid flex-column" onSubmit={handleLogin}>
+                                <Row className="jalign-items-center mt-4">
+                                    <Col lg={12} md={12} xs={12} className="form-floating mb-3">
+                                        <input
+                                            name="username"
+                                            type="text"
+                                            className="form-control"
+                                            id="floatingInput"
+                                            placeholder="Login ..."
+                                            maxLength="30"
+                                            required="required"
+                                            ref={refUsuario}
+                                        />
+                                        <label htmlFor="floatingInput">&nbsp;Usuario</label>
+                                    </Col>
+                                    <Col lg={12} md={12} xs={12} className="form-floating mb-3">
+                                        <input
+                                            name="userpass"
+                                            type="password"
+                                            className="form-control"
+                                            id="floatingPassword"
+                                            placeholder="Contraseña"
+                                            maxLength="15"
+                                            required="required"
+                                            ref={refClave}
+                                        />
+                                        <label htmlFor="floatingPassword">&nbsp;Contraseña</label>
+                                    </Col>
+                                    <Col className="mb-3 d-grid">
+                                        <button
+                                            name="enviodatos"
+                                            type="submit"
+                                            className="btn btnEntrar"
+                                        >
+                                            Entrar
+                                        </button>
+                                    </Col>
+                                </Row>
+                            </form>
+                        </Row>
+                        <Row>
+                            {
+                                error &&
+                                <Col lg={12} md={12} xs={12} className="mb-3">
+                                    <Alert variant={'danger'}>
+                                        {mensaje}
+                                    </Alert>
                                 </Col>
-                                <Col lg={12} md={12} xs={12} className="form-floating mb-3">
-                                    <input
-                                        name="userpass"
-                                        type="password"
-                                        className="form-control"
-                                        id="floatingPassword"
-                                        placeholder="Contraseña"
-                                        maxLength="15"
-                                        required="required"
-                                        ref={refClave}
-                                    />
-                                    <label htmlFor="floatingPassword">&nbsp;Contraseña</label>
-                                </Col>
-                                <Col className="mb-3 d-grid">
-                                    <button
-                                        name="enviodatos"
-                                        type="submit"
-                                        className="btn btnEntrar"
-                                    >
-                                        Entrar
-                                    </button>
-                                </Col>
-                            </Row>
-                        </form>
-                    </Row>
-                    <Row>
-                        {
-                            error &&
+
+                            }
+                        </Row>
+                        <Row>
                             <Col lg={12} md={12} xs={12} className="mb-3">
-                                <Alert variant={'danger'}>
-                                    {mensaje}
-                                </Alert>
+                                <Link to="/RecuperarClave" className="recuperaPwd">¿Olvidó su contraseña?</Link>
+
                             </Col>
-
-                        }
-                    </Row>
-                    <Row>
-                        <Col lg={12} md={12} xs={12} className="mb-3">
-                        <Link to="/RecuperarClave" className="recuperaPwd">¿Olvidó su contraseña?</Link>
-
-                        </Col>
-                        <Col lg={12} md={12} xs={12} className="mb-3">
-                            <Link to="/Registro" className="btn btnRegistro">Registro</Link>
-                        </Col>
-                    </Row>
+                            <Col lg={12} md={12} xs={12} className="mb-3">
+                                <Link to="/Registro" className="btn btnRegistro">Registro</Link>
+                            </Col>
+                        </Row>
                     </div>
                 </Col>
             </Row>

@@ -5,7 +5,7 @@ export default function Enlaces(props){
     return(
         <ul>
             <li onClick={() => props.menuAbierto && props.closeMenu()}>
-                <NavLink exact to="/Inicio">Inicio</NavLink>
+                <NavLink exact to="/">Inicio</NavLink>
             </li>
             <li onClick={() => props.menuAbierto && props.closeMenu()}>
                 <NavLink exact to="/Descubre">Descubre</NavLink>

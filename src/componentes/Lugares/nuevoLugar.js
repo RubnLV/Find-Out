@@ -2,12 +2,15 @@ import Button from "@restart/ui/esm/Button";
 import React, { useRef, useEffect, useState } from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 
-import{validaDatosLugar} from "./validacionFormLugar";
+import { validaDatosLugar } from "./validacionFormLugar";
 import { enviaDatos } from "../hooks/funciones";
+import Menu from "./../Menu/NavBar";
+
+import './estilosLugar.scss';
 
 const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_guardaLugar.php';
 
-export default function NuevoLugar(){
+export default function NuevoLugar() {
 
     const refLugar = useRef(null);
     const refDireccion = useRef(null);
@@ -60,7 +63,7 @@ export default function NuevoLugar(){
         const opciones = {
             method: 'POST',
             body: new FormData(form)
-            
+
         };
         console.log(opciones);
         //acciones despues de validar los datos en el cliente
@@ -75,24 +78,29 @@ export default function NuevoLugar(){
             //     setError(true);
             // } 
 
-        }else{
+        } else {
             // setMensajes(datosValidados.mensaje);
             // setError(true);
             console.log('error al recibir info del php');
         }
     }
 
-    return(
-        <Container className=" align-middle p-4">
-            <Row className="justify-content-center border border-4 rounded">
-                <Col md={8}>
-                    <form 
-                    name="formLogin"
-                    id="formLogin"
+    return (
+        <Container fluid className=" align-middle" style={{ margin: "0px", padding: "0px" }}>
+            <Row style={{ margin: "0px", padding: "0px" }}>
+                <Menu />
+            </Row>
+            <Row className="contenedor">
+                <Col lg={5} md={6} xs={11} >
+                    <div className="border-4 rounded divLugar">
+                    <form
+                        name="formLogin"
+                        id="formLogin"
                         className="container-fluid "
-                         onSubmit={handleNuevoLugar}
-                         >
-                        <Row xl={8} className="jalign-items-center mt-5">
+                        style={{padding: 0}}
+                        onSubmit={handleNuevoLugar}
+                    >
+                        <Row xl={8} className="jalign-items-center ">
                             <Col xl={12} className="form-floating mb-3">
                                 <input
                                     name="lugar"
@@ -133,15 +141,15 @@ export default function NuevoLugar(){
                             </Col>
                             <Col xl={12} className="form-floating mb-3">
                                 <p>Elige una Categoria</p>
-                                <select 
-                                className="form-select"
-                                style={{padding: "10px 15px", fontSize: "0.9em"}} 
-                                id="inputGroupSelect01"
-                                required="required"
-                                defaultValue={0}
-                                ref={refCategoria}
+                                <select
+                                    className="form-select"
+                                    style={{ padding: "10px 15px", fontSize: "0.9em" }}
+                                    id="inputGroupSelect01"
+                                    required="required"
+                                    defaultValue={0}
+                                    ref={refCategoria}
                                 >
-                                    <option value={0} >Seleccione una Categoria ...</option>
+                                    <option value={0} >Categoria ...</option>
                                     <option value={1}>Spot</option>
                                     <option value={2}>Pubs</option>
                                     <option value={3}>Restaurante</option>
@@ -149,13 +157,19 @@ export default function NuevoLugar(){
                                 </select>
                             </Col>
                             <Col xl={12} className="form-floating mb-3">
-                                <p>Elija una imagen</p>
+                                <label 
+                                htmlFor="imagen"
+                                className="lblImagen"
+                                >
+                                    Elija una imagen
+                                </label>
                                 <input
-                                    className="control"
+                                    className="control iptImagen"
                                     type="file"
                                     id="imagen"
                                     name="imagen"
                                     accept="image/png,image/jpeg"
+                                    placeholder="Elija Imagen"
                                     onChange={handleChangeImagen}
                                 />
                             </Col>
@@ -163,37 +177,39 @@ export default function NuevoLugar(){
                                 imagen &&
                                 <Col xl={12} className="form-floating img-thumbnail mb-3">
                                     <img src={preview} alt="Imagen" />
-                                    <Button 
-                                    variant="warning"
-                                    className="d-block btn btn-warning"
-                                    onClick={() => setImagen(null)}
+                                    <Button
+                                        variant="warning"
+                                        className="d-block btn btn-warning"
+                                        onClick={() => setImagen(null)}
                                     >
                                         Eliminar Imagen
                                     </Button>
                                 </Col>
                             }
-                            
+
                             <Col xl={8} className="mb-3 d-grid">
-                            <Button
-                                name="guardarLugar"
-                                type="submit"
-                                className="btn btn-primary "
-                            >
-                                Guardar
-                            </Button>
-                            </Col> 
+                                <Button
+                                    name="guardarLugar"
+                                    type="submit"
+                                    className="btn btnGuardar "
+                                >
+                                    Guardar
+                                </Button>
+                            </Col>
                         </Row>
                     </form>
+
+                    {
+                        error &&
+                        <Col xl={8} md={8} className="mb-3">
+                            <Alert variant={'danger'}>
+                                {mensaje}
+                            </Alert>
+                        </Col>
+
+                    }
+                    </div>
                 </Col>
-                {
-                    error &&
-                    <Col xl={8} md={8} className="mb-3">
-                        <Alert variant={'danger'}>
-                            {mensaje}
-                        </Alert>
-                    </Col>
-                    
-                }
             </Row>
         </Container>
     );

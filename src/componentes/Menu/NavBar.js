@@ -10,9 +10,9 @@ import Menu from "./Menu";
 export default function NavBar(){
     return(
         <div className="NavBar">
-            <NavLink exact to="/Inicio">
+            <NavLink className="enlaceTitulo" exact to="/">
                 {/* <img src={Logo} alt="logo" className="logo"/> */}
-                Menu
+                <h2 className="titulo">Find Out</h2>
             </NavLink>
             
             <Menu />
