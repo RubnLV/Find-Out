@@ -59,10 +59,11 @@ export default function NuevoLugar() {
         var datosValidados = validaDatosLugar(datos);
         console.log(datosValidados);
         //creamos opciones de envio
-        var form = document.getElementById("formLogin");
+        var form = new FormData(document.getElementById("formLogin"));
+        console.log(form);
         const opciones = {
             method: 'POST',
-            body: new FormData(form)
+            body: form
 
         };
         console.log(opciones);
@@ -98,53 +99,56 @@ export default function NuevoLugar() {
                         id="formLogin"
                         className="container-fluid "
                         style={{padding: 0}}
+                        enctype="multipart/form-data"
                         onSubmit={handleNuevoLugar}
                     >
                         <Row xl={8} className="jalign-items-center ">
                             <Col xl={12} className="form-floating mb-3">
                                 <input
                                     name="lugar"
+                                    id="lugar"
                                     type="text"
                                     className="form-control"
-                                    id="floatingInput"
                                     placeholder="Login ..."
                                     maxLength="30"
                                     required="required"
                                     ref={refLugar}
                                 />
-                                <label htmlFor="floatingInput">&nbsp;Lugar</label>
+                                <label htmlFor="lugar">&nbsp;Lugar</label>
                             </Col>
                             <Col xl={12} className="form-floating mb-3">
                                 <input
                                     name="direccion"
+                                    id="direccion"
                                     type="text"
                                     className="form-control"
-                                    id="floatingInput"
                                     placeholder="Login ..."
                                     maxLength="30"
                                     required="required"
                                     ref={refDireccion}
                                 />
-                                <label htmlFor="floatingInput">&nbsp;Dirección</label>
+                                <label htmlFor="direccion">&nbsp;Dirección</label>
                             </Col>
                             <Col xl={12} className="form-floating mb-3">
                                 <textarea
+                                    name="descripcion"
+                                    id="descripcion"
                                     className="form-control"
                                     placeholder="Descripcion"
-                                    id="floatingTextarea2"
                                     style={{ height: '100px' }}
                                     maxLength="500"
                                     required="required"
                                     ref={refDescripcion}
                                 />
-                                <label htmlFor="floatingTextarea2">&nbsp;Descripción</label>
+                                <label htmlFor="descripcion">&nbsp;Descripción</label>
                             </Col>
                             <Col xl={12} className="form-floating mb-3">
                                 <p>Elige una Categoria</p>
                                 <select
+                                    name="categoria"
+                                    id="categoria"
                                     className="form-select"
                                     style={{ padding: "10px 15px", fontSize: "0.9em" }}
-                                    id="inputGroupSelect01"
                                     required="required"
                                     defaultValue={0}
                                     ref={refCategoria}
