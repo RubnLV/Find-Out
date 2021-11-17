@@ -1,9 +1,9 @@
-import Button from "@restart/ui/esm/Button";
 import React, { useRef, useEffect, useState } from "react";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Container, Row, Col, Alert, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
+import { borraToken, getToken, validaToken, enviaDatos } from "../hooks/funciones";
 import { validaDatosLugar } from "./validacionFormLugar";
-import { enviaDatos } from "../hooks/funciones";
 import Menu from "./../Menu/NavBar";
 
 import './estilosLugar.scss';
@@ -11,7 +11,7 @@ import './estilosLugar.scss';
 const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_guardaLugar.php';
 
 export default function NuevoLugar() {
-
+    const history = useHistory();
     const refLugar = useRef(null);
     const refDireccion = useRef(null);
     const refDescripcion = useRef(null);
@@ -80,11 +80,25 @@ export default function NuevoLugar() {
             // } 
 
         } else {
-            // setMensajes(datosValidados.mensaje);
-            // setError(true);
+             setMensajes(datosValidados.mensaje);
+             setError(true);
             console.log('error al recibir info del php');
         }
     }
+
+    useEffect(() => {
+        async function cargaTkn() {
+            const keys = getToken();
+            console.log('login-getTkn');
+            console.log(keys);
+            if(!validaToken(keys)){
+                borraToken();
+                history.push('/Login')
+            }
+        }
+
+        cargaTkn();
+    },[]);
 
     return (
         <Container fluid className=" align-middle" style={{ margin: "0px", padding: "0px" }}>
@@ -99,7 +113,7 @@ export default function NuevoLugar() {
                         id="formLogin"
                         className="container-fluid "
                         style={{padding: 0}}
-                        enctype="multipart/form-data"
+                        encType="multipart/form-data"
                         onSubmit={handleNuevoLugar}
                     >
                         <Row xl={8} className="jalign-items-center ">
@@ -157,7 +171,7 @@ export default function NuevoLugar() {
                                     <option value={1}>Spot</option>
                                     <option value={2}>Pubs</option>
                                     <option value={3}>Restaurante</option>
-                                    <option value={3}>Lugar</option>
+                                    <option value={4}>Lugar</option>
                                 </select>
                             </Col>
                             <Col xl={12} className="form-floating mb-3">
@@ -191,6 +205,16 @@ export default function NuevoLugar() {
                                 </Col>
                             }
 
+                            {
+                                error &&
+                                <Col lg={12} md={12} xs={12} className="mb-3">
+                                    <Alert variant={'danger'} onClose={() => setError(false)} dismissible >
+                                        {mensaje}
+                                    </Alert>
+                                </Col>
+
+                            }
+
                             <Col xl={8} className="mb-3 d-grid">
                                 <Button
                                     name="guardarLugar"
@@ -202,16 +226,6 @@ export default function NuevoLugar() {
                             </Col>
                         </Row>
                     </form>
-
-                    {
-                        error &&
-                        <Col xl={8} md={8} className="mb-3">
-                            <Alert variant={'danger'}>
-                                {mensaje}
-                            </Alert>
-                        </Col>
-
-                    }
                     </div>
                 </Col>
             </Row>

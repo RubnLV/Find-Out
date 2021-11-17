@@ -169,7 +169,7 @@ export default function AltaUsuario() {
                                 {
                                     error &&
                                     <Col xl={8} md={8} className="mb-3">
-                                        <Alert variant={'danger'}>
+                                        <Alert variant={'danger'} onClose={() => setError(false)} dismissible>
                                             {mensaje}
                                         </Alert>
                                     </Col>

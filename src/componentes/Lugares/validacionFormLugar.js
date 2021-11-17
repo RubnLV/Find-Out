@@ -68,14 +68,21 @@ export function validaDatosLugar(props) {
         }
     }
     //imagen
-    if (exRegImg.test(imagen.name) == false) {
+    if (imagen == null || imagen == 'undefined') {
         mensaje['valido'] = false;
-        mensaje['mensaje'] = "El archivo adjunto no es una imagen, solo se aceptan archivos .png o .jpg";
+        mensaje['mensaje'] = "No se ha recibido ninguna imagen";
         return mensaje;
     }else{
-        if(imagen.size > tamanio){
+        if (exRegImg.test(imagen.name) == false) {
             mensaje['valido'] = false;
-            mensaje['mensaje'] = "La imagen no puede ser mayor a 10Mb";
+            mensaje['mensaje'] = "El archivo adjunto no es una imagen, solo se aceptan archivos .png o .jpg";
+            return mensaje;
+        }else{
+            if(imagen.size > tamanio){
+                mensaje['valido'] = false;
+                mensaje['mensaje'] = "La imagen no puede ser mayor a 10Mb";
+                return mensaje;
+            }
         }
     }
     mensaje['valido'] = true;

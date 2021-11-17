@@ -126,7 +126,7 @@ export default function FormLogin() {
                             {
                                 error &&
                                 <Col lg={12} md={12} xs={12} className="mb-3">
-                                    <Alert variant={'danger'}>
+                                    <Alert variant={'danger'} onClose={() => setError(false)} dismissible>
                                         {mensaje}
                                     </Alert>
                                 </Col>
