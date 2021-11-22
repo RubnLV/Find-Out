@@ -106,7 +106,7 @@ export default function NuevoLugar() {
                 <Menu />
             </Row>
             <Row className="contenedor">
-                <Col lg={5} md={6} xs={11} >
+                <Col lg={5} md={9} xs={11} >
                     <div className="border-4 rounded divLugar">
                     <form
                         name="formLogin"
@@ -194,7 +194,7 @@ export default function NuevoLugar() {
                             {
                                 imagen &&
                                 <Col xl={12} className="form-floating img-thumbnail mb-3">
-                                    <img src={preview} alt="Imagen" />
+                                    <img src={preview} alt="Imagen" className="img-thumbnail"/>
                                     <Button
                                         variant="warning"
                                         className="d-block btn btn-warning"

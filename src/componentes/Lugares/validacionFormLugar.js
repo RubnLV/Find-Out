@@ -4,7 +4,7 @@ export function validaDatosLugar(props) {
     //const exReg = /^[a-zA-Z]+[0-9]*$/;
     const exRegText = /^[a-zA-Z0-9]+(\s[a-zA-Z0-9]*)*$/;
     const exRegImg = /\.(jpg|png)$/i;
-    const tamanio = 10 * 1048576;
+    const tamanio = 3 * 1048576; //tamaño maximo en Mb
     var mensaje = {};
 
     //lugar
@@ -68,11 +68,25 @@ export function validaDatosLugar(props) {
         }
     }
     //imagen
-    if (imagen == null || imagen == 'undefined') {
-        mensaje['valido'] = false;
-        mensaje['mensaje'] = "No se ha recibido ninguna imagen";
-        return mensaje;
-    }else{
+    // if (imagen == null || imagen == 'undefined') {
+    //     mensaje['valido'] = false;
+    //     mensaje['mensaje'] = "No se ha recibido ninguna imagen";
+    //     return mensaje;
+    // }else{
+    //     if (exRegImg.test(imagen.name) == false) {
+    //         mensaje['valido'] = false;
+    //         mensaje['mensaje'] = "El archivo adjunto no es una imagen, solo se aceptan archivos .png o .jpg";
+    //         return mensaje;
+    //     }else{
+    //         if(imagen.size > tamanio){
+    //             mensaje['valido'] = false;
+    //             mensaje['mensaje'] = "La imagen no puede ser mayor a 10Mb";
+    //             return mensaje;
+    //         }
+    //     }
+    // }
+    //debugger
+    if (imagen != null || imagen != undefined) {
         if (exRegImg.test(imagen.name) == false) {
             mensaje['valido'] = false;
             mensaje['mensaje'] = "El archivo adjunto no es una imagen, solo se aceptan archivos .png o .jpg";
