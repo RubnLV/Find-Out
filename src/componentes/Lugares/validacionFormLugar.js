@@ -1,9 +1,10 @@
 export function validaDatosLugar(props) {
     //debugger
-    const { lugar, direccion, descripcion, categoria_id, imagen } = props;
+    const { lugar, direccion, coordenadas, descripcion, categoria_id, imagen } = props;
     //const exReg = /^[a-zA-Z]+[0-9]*$/;
     const exRegText = /^[a-zA-Z0-9]+(\s[a-zA-Z0-9]*)*$/;
     const exRegImg = /\.(jpg|png)$/i;
+    const exRegCoords = /^[-]?\d+[\.]?\d*, {0,1}[-]?\d+[\.]?\d*$/;
     const tamanio = 3 * 1048576; //tamaño maximo en Mb
     var mensaje = {};
 
@@ -36,6 +37,18 @@ export function validaDatosLugar(props) {
         } else if (direccion.length > 150) {
             mensaje['valido'] = false;
             mensaje['mensaje'] = "La dirección debe contener maximo 150 caracteres";
+            return mensaje;
+        }
+    }
+    //coordenadas
+    if(coordenadas != null && coordenadas != undefined && coordenadas.length != 0){
+        if (exRegCoords.test(coordenadas) == false) {
+            mensaje['valido'] = false;
+            mensaje['mensaje'] = "Las coordenadas deben tener el siguite formato Ejem: 40.749825, -73.090443";
+            return mensaje;
+        } else if (coordenadas.length > 300) {
+            mensaje['valido'] = false;
+            mensaje['mensaje'] = "Las coordenadas deben contener maximo 300 caracteres";
             return mensaje;
         }
     }
@@ -85,8 +98,7 @@ export function validaDatosLugar(props) {
     //         }
     //     }
     // }
-    //debugger
-    if (imagen != null || imagen != undefined) {
+    if (imagen != null && imagen != undefined) {
         if (exRegImg.test(imagen.name) == false) {
             mensaje['valido'] = false;
             mensaje['mensaje'] = "El archivo adjunto no es una imagen, solo se aceptan archivos .png o .jpg";

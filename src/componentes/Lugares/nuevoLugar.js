@@ -16,6 +16,7 @@ export default function NuevoLugar() {
     const refDireccion = useRef(null);
     const refDescripcion = useRef(null);
     const refCategoria = useRef(null);
+    const refCoords = useRef(null);
     const refFileInput = useRef(null);
 
     const [imagen, setImagen] = useState(null)
@@ -49,6 +50,7 @@ export default function NuevoLugar() {
         const datos = {
             "lugar": refLugar.current.value,
             "direccion": refDireccion.current.value,
+            "coordenadas": refCoords.current.value,
             "descripcion": refDescripcion.current.value,
             "categoria_id": refCategoria.current.value,
             "imagen": imagen
@@ -72,12 +74,12 @@ export default function NuevoLugar() {
         if (datosValidados.valido) {
             const datosServ = await enviaDatos(URL_CONTROLADOR, opciones);
             console.log(datosServ);
-            // if (datosServ.conectado) {
-            //     history.push('/')
-            // }else{
-            //     setMensajes(datosServ.mensaje);
-            //     setError(true);
-            // } 
+            if (datosServ.conectado) {
+                history.push('/')
+            }else{
+                setMensajes(datosServ.mensaje);
+                setError(true);
+            } 
 
         } else {
              setMensajes(datosValidados.mensaje);
@@ -106,7 +108,7 @@ export default function NuevoLugar() {
                 <Menu />
             </Row>
             <Row className="contenedor">
-                <Col lg={5} md={9} xs={11} >
+                <Col lg={7} md={9} xs={11} >
                     <div className="border-4 rounded divLugar">
                     <form
                         name="formLogin"
@@ -123,7 +125,7 @@ export default function NuevoLugar() {
                                     id="lugar"
                                     type="text"
                                     className="form-control"
-                                    placeholder="Login ..."
+                                    placeholder="Lugar ..."
                                     maxLength="30"
                                     required="required"
                                     ref={refLugar}
@@ -136,12 +138,24 @@ export default function NuevoLugar() {
                                     id="direccion"
                                     type="text"
                                     className="form-control"
-                                    placeholder="Login ..."
+                                    placeholder="Dirección ..."
                                     maxLength="30"
                                     required="required"
                                     ref={refDireccion}
                                 />
                                 <label htmlFor="direccion">&nbsp;Dirección</label>
+                            </Col>
+                            <Col xl={12} className="form-floating mb-3">
+                                <input
+                                    name="coordenadas"
+                                    id="coordenadas"
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Coordenadas ..."
+                                    maxLength="500"
+                                    ref={refCoords}
+                                />
+                                <label htmlFor="coordenadas">&nbsp;Coordenadas</label>
                             </Col>
                             <Col xl={12} className="form-floating mb-3">
                                 <textarea
