@@ -9,10 +9,10 @@ $respuesta = [];
     {
         if(!empty($_POST['lugar']))
         {
-            $lugar = filtrado($_POST['lugar']);
+            $nombreLugar = filtrado($_POST['lugar']);
             //$respuesta['lugar'] = $lugar;
         }else{
-            $respuesta['error'] = 'No se a recibido informacion del lugar';
+            $respuesta['mensaje'] = 'No se a recibido informacion del lugar';
         }
         if(!empty($_POST['direccion']))
         {
@@ -21,7 +21,7 @@ $respuesta = [];
             $direccion = str_replace("\r", '', $direccion); // quitar retorno de carro
             //$respuesta['direccionmp'] = $direccion;
         }else{
-            $respuesta['error'] = 'No se a recibido informacion de la dirección';
+            $respuesta['mensaje'] = 'No se a recibido informacion de la dirección';
         }
         if(!empty($_POST['coordenadas']))
         {
@@ -37,7 +37,7 @@ $respuesta = [];
             $descripcion = str_replace("\r", '', $descripcion); // quitar retorno de carro
             //$respuesta['descripcion'] = $descripcion;
         }else{
-            $respuesta['error'] = 'No se a recibido informacion de la descripcion';
+            $respuesta['mensaje'] = 'No se a recibido informacion de la descripcion';
         }
         if(!empty($_POST['categoria']))
         {
@@ -47,10 +47,10 @@ $respuesta = [];
                     //$respuesta['categoria'] = $categoria;
                 }
                 else{
-                    $respuesta['error'] = 'La categoria es incorrecta';
+                    $respuesta['mensaje'] = 'La categoria es incorrecta';
                 }
         }else{
-            $respuesta['error'] = 'No se a recibido informacion de la categoria';
+            $respuesta['mensaje'] = 'No se a recibido informacion de la categoria';
         }
         // $respuesta['a'] = 1;
         // $respuesta['files'] = $_FILES['imagen']['name'];
@@ -68,7 +68,7 @@ $respuesta = [];
                 // $respuesta['tmp-imagen'] = $_FILES['imagen']['tmp_name'];
                 // $respuesta['size-imagen'] = $_FILES['imagen']['size'];
             }else{
-                $respuesta['error'] = 'Error en el tipo de archivo';
+                $respuesta['mensaje'] = 'Error en el tipo de archivo';
             }            
         }else{
             $nombre_imagen_default = './../assets/imagenes/mapa_default.jpg';
@@ -76,7 +76,7 @@ $respuesta = [];
         }
         //$respuesta['default'] = $default;
         //acciones a realizar si no hay ningun error, si respuesta esta vacio
-        if(empty($respuesta))
+        if(empty($respuesta)) //****
         {
             $dirImg = './../assets/imagenes';
             switch ($categoria) 
@@ -94,7 +94,7 @@ $respuesta = [];
                     $dirImg = $dirImg.'/Lugares';
                     break;
             }
-            $respuesta['dirImg'] = $dirImg;
+            //$respuesta['dirImg'] = $dirImg;
             if(is_dir($dirImg))
             {
                 //$archivo = $dirImg.'/'.$nombre_imagen;
@@ -102,8 +102,9 @@ $respuesta = [];
                 if(!$default)
                 {
                     $archivo = $dirImg.'/'.$nombre_imagen;
-                    //$respuesta['dafault'] = 0;
-                    if(!file_exists($archivo)){
+                    //$respuesta['archivo'] = $archivo;
+                    if(!file_exists($archivo))
+                    {
                         //$respuesta['subido'] = true;
                         if(move_uploaded_file($tmp_imagen, $archivo)){
                             $guardado = true;
@@ -113,7 +114,7 @@ $respuesta = [];
                     }else{
                         $guardado = false;
                         $existe = true;
-                        $respuesta['error'] = 'La imagen ya existe';
+                        $respuesta['mensaje'] = 'Ya existe una imagen con ese nombre - a';
                     }
                 }
             }else{
@@ -122,8 +123,9 @@ $respuesta = [];
                 //$respuesta['isdir_'] = 'c';
                 if(!$default){
                     $archivo = $dirImg.'/'.$nombre_imagen;
-                    if(!file_exists($archivo)){
-                        $respuesta['subido'] = true;
+                    if(!file_exists($archivo))
+                    {
+                        //$respuesta['subido'] = true;
                         if(move_uploaded_file($tmp_imagen, $archivo)){
                             $guardado = true;
                             $existe = false;
@@ -132,10 +134,12 @@ $respuesta = [];
                     }else{
                         $guardado = false;
                         $existe = true;
-                        $respuesta['error'] = 'La imagen ya existe';
+                        $respuesta['mensaje'] = 'Ya existe una imagen con ese nombre - b';
                     }
                 }
-            }
+            } 
+            // $respuesta['default'] = $default;
+            // echo json_encode($respuesta);
 //--------
             if(!$default)
             {
@@ -145,70 +149,91 @@ $respuesta = [];
                     $dirImgWeb = $dirImg.'_web';
                     $imagenWeb = $dirImgWeb.'/'.$nombre_imagen;
                     //$respuesta['web'] = $dirImgWeb.' y '.$imagenWeb;
-                    if(is_dir($dirImgWeb)){
-                        if(file_exists($archivo)){
-                            $img = new Imaging();
-                            $img->set_img($archivo);
-                            $img->set_quality(80);
-                            //---
-                            $img->set_size(600);
-                            $img->save_img($imagenWeb);
-                            //---
-                            $img->clear_cache();
-    
-                            $guardadoWeb = true;
-                            //$respuesta['guardadoWeb 1'] = $guardadoWeb;
+                    if(is_dir($dirImgWeb))
+                    {
+                        if(!file_exists($imagenWeb))
+                        {
+                            if(file_exists($archivo))
+                            {
+                                $img = new Imaging();
+                                $img->set_img($archivo);
+                                $img->set_quality(80);
+                                //---
+                                $img->set_size(600);
+                                $img->save_img($imagenWeb);
+                                //---
+                                $img->clear_cache();
+        
+                                $guardadoWeb = true;
+                                //$respuesta['guardadoWeb 1'] = $guardadoWeb;
+                            }else{
+                                $guardadoWeb = false;
+                                $respuesta['mensaje'] = 'No se a podido generar la imagen web';
+                            }
                         }else{
-                            $guardadoWeb = false;
-                            $respuesta['error'] = 'No se a podido generar la imagen web';
+                            $respuesta['mensaje'] = 'La imagen web ya existe';
                         }
+                        
                         //$respuesta['dir'] = 'existe';
                     }else{
                         mkdir($dirImgWeb ,0777,true);
-                        if(file_exists($archivo)){
-                            $img = new Imaging();
-                            $img->set_img($archivo);
-                            $img->set_quality(80);
-                            //---
-                            $img->set_size(600);
-                            $img->save_img($imagenWeb);
-                            //---
-                            $img->clear_cache();
-    
-                            $guardadoWeb = true;
-                            //$respuesta['guardadoWeb 2'] = $guardadoWeb;
+                        if(!file_exists($imagenWeb))
+                        {
+                            if(file_exists($archivo))
+                            {
+                                $img = new Imaging();
+                                $img->set_img($archivo);
+                                $img->set_quality(80);
+                                //---
+                                $img->set_size(600);
+                                $img->save_img($imagenWeb);
+                                //---
+                                $img->clear_cache();
+        
+                                $guardadoWeb = true;
+                                //$respuesta['guardadoWeb 2'] = $guardadoWeb;
+                            }else{
+                                $guardadoWeb = false;
+                                $respuesta['mensaje'] = 'No se a podido generar la imagen web 2';
+                            }
+                            // $respuesta['dir'] = 'creado';
+                            // $respuesta['g-e'] = $guardado.' -- '.$existe;
                         }else{
-                            $guardadoWeb = false;
-                            $respuesta['error'] = 'No se a podido generar la imagen web';
+                            $respuesta['mensaje'] = 'La imagen web ya existe 2';
                         }
-                        // $respuesta['dir'] = 'creado';
-                        // $respuesta['g-e'] = $guardado.' -- '.$existe;
                     }
     
     
                 }else{
-                    $respuesta['error'] = 'La imagen ya existe 2';
+                    $respuesta['mensaje'] = 'Ya existe una imagen con ese nombre 2';
                 }
-//----
-                if($guardadoWeb)
-                { //#fallo
-                    $lugar = new GuardaDireccion();
-                    $nuevoLugar = $lugar->guardaLugar($lugar,$direccion,$coordenadas,$categoria,$descripcion,$imagenWeb);
-                    echo json_encode($nuevoLugar);
+                //echo json_encode($respuesta);
+//----          
+                if(empty($respuesta)){
+                    if($guardadoWeb)
+                    { //#fallo
+                        $lugar = new GuardaDireccion();
+                        $nuevoLugar = $lugar->guardaLugar($nombreLugar,$direccion,$coordenadas,$categoria,$descripcion,$imagenWeb);
+                        echo json_encode($nuevoLugar);
 
-                    // $respuesta['datos'] = $lugar.' | '.$direccion.' | '.$coordenadas.' | '.$categoria.' | '.$descripcion.' | '.$imagenWeb;
-                    // echo json_encode($respuesta);
+                        // $respuesta['datos'] = $nombreLugar.' | '.$direccion.' | '.$coordenadas.' | '.$categoria.' | '.$descripcion.' | '.$imagenWeb;
+                        // echo json_encode($respuesta);
+                    }else{
+                        $respuesta['mensaje'] = 'Error, no se puede guardar el lugar';
+                        echo json_encode($respuesta);
+                    }
                 }else{
-                    $respuesta['error'] = 'Error, no se puede guardar el lugar';
+                    echo json_encode($respuesta);
                 }
-                // $respuesta['guardado-web'] = $guardadoWeb;
-                // $respuesta['imgWeb'] = $imagenWeb;
+                
+                    // $respuesta['guardado-web'] = $guardadoWeb;
+                    // $respuesta['imgWeb'] = $imagenWeb;
             }else{ //#fallo
                 $lugar = new GuardaDireccion();
-                $nuevoLugar = $lugar->guardaLugar($lugar,$direccion,$coordenadas,$categoria,$descripcion,$nombre_imagen_default);
+                $nuevoLugar = $lugar->guardaLugar($nombreLugar,$direccion,$coordenadas,$categoria,$descripcion,$nombre_imagen_default);
                 echo json_encode($nuevoLugar);
 
-                // $respuesta['datos'] = $lugar.' | '.$direccion.' | '.$coordenadas.' | '.$categoria.' | '.$descripcion.' | '.$nombre_imagen_default;
+                // $respuesta['datos'] = $nombreLugar.' | '.$direccion.' | '.$coordenadas.' | '.$categoria.' | '.$descripcion.' | '.$nombre_imagen_default;
                 // echo json_encode($respuesta);
             }
         }else{
@@ -216,7 +241,7 @@ $respuesta = [];
         }
         
     }else{
-        $respuesta['error'] = 'No hay nada en post';
+        $respuesta['mensaje'] = 'No hay nada en post';
         echo json_encode($respuesta);
     }
 ?>

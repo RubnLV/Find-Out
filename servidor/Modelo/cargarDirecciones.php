@@ -18,23 +18,20 @@
 
             try
             {
-                $sql = 'SELECT lugares.id_lugar, lugares.nombre, lugares.direccion, lugares.descripcion, categorias.categoria';
+                $sql = 'SELECT lugares.id_lugar, lugares.nombre, lugares.direccion, lugares.coordenadas, lugares.descripcion, categorias.categoria, imagenes.urlImagen';
                 $sql .= ' FROM lugares';
-                $sql .= 'outer join left categorias on lugares.categoria_id = categorias.categoria_id';
+                $sql .= ' left outer join categorias on lugares.categoria_id = categorias.categoria_id';
+                $sql .= ' left outer join imagenes on lugares.id_lugar = imagenes.id_lugar';
                 $consulta = $this->db->prepare($sql);
-                $consulta->bindParam(':log',$login,PDO::PARAM_STR);
                 $consulta->execute();
 
-                if($consulta->rowCount() > 0)
-                {
-                    $datos['mensaje'] = 'El nombre de usuario ya existe, utilice otro nombre';
-                    $datos['datos'] = true;
-                    return $datos;
-                }else{
-                    $datos['mensaje'] = 'Aun no se han registrado lugares';
-                    $datos['datos'] = false;
-                    return $datos;
+                while($fila=$consulta->fetch(PDO::FETCH_ASSOC)){
+                    $datos['lugares'][] = $fila;
                 }
+                return($datos);
+                // echo ("<pre>");
+                // print_r($datos);
+                // echo ("<pre>");
 
             }catch(PDOException $e){   
                 die( 'Error en la conexion con la base de datos!! '.$e->getMessage().' '. $e->getLine());
@@ -42,4 +39,7 @@
             }
         }
     }
+
+    // $diecciones = new CargaDirecciones();
+    // $info = $diecciones->getDirecciones();
 ?>
