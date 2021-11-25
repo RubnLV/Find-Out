@@ -1,8 +1,10 @@
 .btnNuevoLugar{
-    display: block;
-    position: absolute;
+    display: block !important;
+    position: fixed;
     right: 10px;
     bottom: 10px;
+    width: 40px !important;
+    padding: 5px 0px !important;
     color: #0a1537 !important;
     background-color: transparent !important;
     border-color: #0a1537 !important;

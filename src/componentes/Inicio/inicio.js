@@ -3,9 +3,10 @@ import { Container, Row, Button} from 'react-bootstrap';
 import { useHistory } from "react-router";
 import {borraToken, getToken, validaToken, enviaDatos} from "../hooks/funciones";
 
-import Lugares from "../Lugares/lugares"
+import {MdAddLocationAlt} from 'react-icons/md'
+import ListaLugares from "./../ListaLugares/listaLugares";
 import Menu from "./../Menu/NavBar";
-import "./estilosInicio.scss"
+import "./estilosInicio.scss";
 
 const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_cargaDirecciones.php';
 
@@ -37,7 +38,7 @@ export default function Inicio() {
         };
         async function cargaDatos(){
             const datosServ = await enviaDatos(URL_CONTROLADOR, opciones);
-            console.log(datosServ);
+            //console.log(datosServ);
             setDirecciones(datosServ.lugares);
         }
         
@@ -46,7 +47,7 @@ export default function Inicio() {
         cargaDatos()
     },[]);
     
-    console.log(direcciones);
+    //console.log(direcciones);
 
     return (
         
@@ -58,18 +59,19 @@ export default function Inicio() {
             style={{
                 marginTop: "20px"
             }}>
-                <h1>
-                    Inicio
-                </h1>
-                <Lugares />
+                <ListaLugares lugares={direcciones} />
             </Row>
-            
-            <Button 
-            className="btnNuevoLugar"
-            onClick={() => history.push('/Nuevo-Lugar')}
-            >
-                Añadir Lugar
-            </Button>
+            <Row>
+                <Button
+                    className="btnNuevoLugar"
+                    onClick={() => history.push('/Nuevo-Lugar')}
+                >
+                    <MdAddLocationAlt size="1.5em"/>
+                </Button>
+            </Row>
+            <Row>
+                footer
+            </Row>  
         </Container>
     )
 }
