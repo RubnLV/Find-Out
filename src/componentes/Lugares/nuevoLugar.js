@@ -126,7 +126,7 @@ export default function NuevoLugar() {
                                     type="text"
                                     className="form-control"
                                     placeholder="Lugar ..."
-                                    maxLength="30"
+                                    maxLength="100"
                                     required="required"
                                     ref={refLugar}
                                 />
@@ -139,7 +139,7 @@ export default function NuevoLugar() {
                                     type="text"
                                     className="form-control"
                                     placeholder="Dirección ..."
-                                    maxLength="30"
+                                    maxLength="150"
                                     required="required"
                                     ref={refDireccion}
                                 />
@@ -163,7 +163,7 @@ export default function NuevoLugar() {
                                     id="descripcion"
                                     className="form-control"
                                     placeholder="Descripcion"
-                                    style={{ height: '100px' }}
+                                    style={{ height: '200px' }}
                                     maxLength="500"
                                     required="required"
                                     ref={refDescripcion}

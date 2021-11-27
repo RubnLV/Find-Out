@@ -84,7 +84,7 @@ export default function AltaUsuario() {
                 <h3 className="titulo">Finf Out</h3>
             </Row>
             <Row className="contenedor">
-                <Col xl={6} lg={8} md={8} xs={9}>
+                <Col xl={6} lg={8} md={9} xs={9}>
                     <div className="border border-4 rounded divLogin">
                         <form name="formAlta" className="container-fluid " onSubmit={handleAlta}>
                             <Row className="justify-content-md-center">

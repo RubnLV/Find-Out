@@ -1,0 +1,15 @@
+.cardLugar{
+    background-color: #647ecc80 !important;
+    .btnReportar{
+        display: block !important;
+        width: 40px !important;
+        padding: 5px 0px !important;
+        color: #0a1537 !important;
+        background-color: transparent !important;
+        border: none !important;
+        &:hover{
+            color: #fff !important;
+            //background-color: #0a1537 !important;
+        }
+    }
+}

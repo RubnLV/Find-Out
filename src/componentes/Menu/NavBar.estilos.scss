@@ -3,7 +3,7 @@
     height: 80px;
     width: 100%;
     // position: fixed;
-    // z-index: 100;
+    z-index: 100;
     opacity: 0.9;
     display: flex;
     justify-content: space-between;
@@ -64,7 +64,7 @@
         }
         .MobilMenu{
             display: flex;
-            
+            z-index: 100;
             ul{
                 display: flex;
                 flex-direction: column;
@@ -75,6 +75,7 @@
                 //height: 100vh;
                 background-color: #0a1537;
                 border-top: 5px solid #ffc4009d;
+                z-index: 100;
                 
                 li{                   
                     a{

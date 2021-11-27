@@ -10,7 +10,7 @@ import NuevoLugar from './componentes/Lugares/nuevoLugar';
 
 function App() {
   return (
-    <Container fluid style={{margin: "0px", padding: "0px"}}>
+    <Container fluid style={{margin: "0px", padding: "0px", height: "100%"}}>
         <Router>
         <Switch>
           <Route path="/Nuevo-Lugar" exact={true}>

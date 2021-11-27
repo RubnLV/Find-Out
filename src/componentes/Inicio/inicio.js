@@ -52,12 +52,16 @@ export default function Inicio() {
     return (
         
         <Container fluid>
-            <Row>
+            <Row
+            style={{
+                zIndex: "100"
+            }}>
                 <Menu />
             </Row>
             <Row 
             style={{
-                marginTop: "20px"
+                marginTop: "20px",
+                zIndex: "10"
             }}>
                 <ListaLugares lugares={direcciones} />
             </Row>

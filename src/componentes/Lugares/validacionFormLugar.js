@@ -2,10 +2,10 @@ export function validaDatosLugar(props) {
     //debugger
     const { lugar, direccion, coordenadas, descripcion, categoria_id, imagen } = props;
     //const exReg = /^[a-zA-Z]+[0-9]*$/;
-    const exRegText = /^[a-zA-Z0-9]+(\s[a-zA-Z0-9]*)*$/;
+    const exRegText = /^[a-zA-Z0-9]+[\.\,a-zA-ZñÑáéíóúüÁÉÍÓÚÜ\.\,0-9\(\)]*(\s[a-zA-ZñÑáéíóúüÁÉÍÓÚÜ\.\,0-9\(\)]*)*$/;
     const exRegImg = /\.(jpg|png)$/i;
     const exRegCoords = /^[-]?\d+[\.]?\d*, {0,1}[-]?\d+[\.]?\d*$/;
-    const tamanio = 3 * 1048576; //tamaño maximo en Mb
+    const tamanio = 5 * 1048576; //tamaño maximo en Mb
     var mensaje = {};
 
     //lugar
@@ -18,9 +18,9 @@ export function validaDatosLugar(props) {
             mensaje['valido'] = false;
             mensaje['mensaje'] = "Lugar solo debe contener mayusculas, minusculas y numeros";
             return mensaje;
-        } else if (lugar.length > 50) {
+        } else if (lugar.length > 100) {
             mensaje['valido'] = false;
-            mensaje['mensaje'] = "Lugar debe contener maximo 50 caracteres";
+            mensaje['mensaje'] = "Lugar debe contener maximo 100 caracteres";
             return mensaje;
         }
     }
@@ -106,7 +106,7 @@ export function validaDatosLugar(props) {
         }else{
             if(imagen.size > tamanio){
                 mensaje['valido'] = false;
-                mensaje['mensaje'] = "La imagen no puede ser mayor a 10Mb";
+                mensaje['mensaje'] = "La imagen no puede ser mayor a 5Mb";
                 return mensaje;
             }
         }

@@ -1,13 +1,18 @@
-import React from "react";
-import { Row, Col, Alert } from 'react-bootstrap';
+import React, {useState} from "react";
+import { Row, Col, Alert, Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
-import CardLugar from './../CardLugar/cardLugar'
+import CardLugar from './../CardLugar/cardLugar';
+//import Paginacion from './../Paginacion/paginacion';
+import './estilosListaLugares.scss';
 
 export default function ListaLugares(props){
     const {lugares} = props;
+    const [numRegistros, setNumRegistros] = useState(0);
 
     console.log('listaLugares');
     console.log(lugares);
+
     if(!lugares || lugares.length === 0){
         return(
             <Alert variant="primary">
@@ -23,9 +28,33 @@ export default function ListaLugares(props){
         );
     }
 
+    const filtroLugares = () => {
+        //debugger
+        if(lugares.length >12){
+            return lugares.slice(numRegistros, numRegistros+12);
+        }else{
+            return lugares;
+        }
+        
+    }
+    console.log(filtroLugares());
+    
+    const nextPage = () => {
+        //debugger
+        if(lugares.length > numRegistros+12){
+            setNumRegistros(numRegistros+12);
+        } 
+    }
+    const prevPage = () => {
+        if(numRegistros > 0){
+            setNumRegistros(numRegistros-12);
+        }
+    }
+    console.log(numRegistros);
     return(
-        <Row xs={1} md={2} lg={3} className="g-4">
-            {lugares.map((lugar, idx) => (
+        <>
+        <Row xs={1} md={3} lg={4} className="g-4 gridLista">
+            {filtroLugares().map((lugar, idx) => (
                 <Col key={idx}>
                     <CardLugar
                         lugar={lugar} index={idx}
@@ -33,5 +62,25 @@ export default function ListaLugares(props){
                 </Col>
             ))}
         </Row>
+        {lugares.length > 1 &&
+            <Row>
+            <Button
+            variant="primary"
+            style={{width: "10%"}}
+            onClick={prevPage}
+            >
+                Anterior
+            </Button>
+            <Button
+            variant="primary"
+            style={{width: "10%"}}
+            onClick={nextPage}
+            >
+                Siguiente
+            </Button>
+    </Row>
+        }
+        
+        </>
     );
 }

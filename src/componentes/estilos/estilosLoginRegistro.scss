@@ -1,6 +1,7 @@
 .contenedorInicio{
     background: rgb(10,21,55);
     background: linear-gradient(180deg, rgba(10,21,55,1) 13%, rgba(253,187,45,1) 100%);
+    min-height: 100vh;
     .barraSuperior{
     //background-color: #0a1537;
     width: 100vw;
@@ -19,11 +20,12 @@
 .contenedor{
     display: flex;
     justify-content: center;
-    height: 100vh ;  
+    height: 100%;
     .divLogin{
         //max-height: 350px !important;
         display: flex;
         margin-top: 80px;
+        margin-bottom: 80px;
         vertical-align: middle;
         flex-direction: column;
         padding: 15px;
