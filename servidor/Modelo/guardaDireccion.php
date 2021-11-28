@@ -18,17 +18,28 @@
             $datos = [];
             try
             {
-                $sql = 'SELECT id_lugar FROM lugares WHERE direccion=:direc AND categoria_id=:categoria';
-                $consulta= $this->db->prepare($sql);
-                $consulta->bindParam(':direc',$direccion,PDO::PARAM_STR);
-                $consulta->bindParam(':categoria',$categoria,PDO::PARAM_INT);
-                $consulta->execute();
+                // $sql = 'SELECT id_lugar FROM lugares';
+                // $sql .= ' WHERE categoria_id=:categoria ';
+                // if(!empty($coordenadas) || $coordenadas != ''){
+                //     $sql .= ' AND  coordenadas=:coords ';
+                // }else{
 
-                if($consulta->rowCount() > 0){
-                    $datos['mensaje'] = 'Ya existe un lugar con esa dirección y categoria';
-                    $datos['conectado'] = false;
-                    return $datos;
-                }else{   
+                // }
+                 
+                // $consulta= $this->db->prepare($sql);
+                // $consulta->bindParam(':categoria',$categoria,PDO::PARAM_INT);
+                // if(!empty($coordenadas) || $coordenadas != ''){
+                //     $consulta->bindParam(':coords',$coordenadas,PDO::PARAM_STR);
+                // }else{
+                //     $consulta->bindParam(':direc',$direccion,PDO::PARAM_STR);
+                // }
+                // $consulta->execute();
+
+                // if($consulta->rowCount() > 0){
+                //     $datos['mensaje'] = 'Ya existe un lugar con esa dirección y categoria';
+                //     $datos['conectado'] = false;
+                //     return $datos;
+                // }else{   
                     $sql = 'INSERT INTO lugares(nombre, direccion, coordenadas, categoria_id, descripcion) ';
                     $sql .= ' VALUES(:lugar,:direccion,:coords,:categoria,:descripcion)';
 
@@ -70,7 +81,7 @@
                         $datos['conectado'] = false;
                         return $datos;
                     }
-                }
+                //}
             } catch (PDOException $e) {
                 die( 'Error en la conexion con la base de datos!! '.$e->getMessage().' '. $e->getLine());
             }

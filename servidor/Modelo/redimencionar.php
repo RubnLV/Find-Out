@@ -19,10 +19,10 @@ class Imaging
     public function set_img($img)
     {
 
-        // Find format
+        // Encontrar el format
         $ext = strtoupper(pathinfo($img, PATHINFO_EXTENSION));
 
-        // JPEG image
+        // imagen JPEG
         if(is_file($img) && ($ext == "JPG" OR $ext == "JPEG"))
         {
 
@@ -49,11 +49,11 @@ class Imaging
     }
 
     // Set maximum image size (pixels)
-    public function set_size($size = 100)
+    public function set_size($size = 500)
     {
 
         // Resize
-        if($this->x_input > $size && $this->y_input > $size)
+        if($this->x_input > $size || $this->y_input > $size)
         {
 
             // Width
@@ -73,13 +73,16 @@ class Imaging
 
             }
 
-            // Ready
-            $this->resize = TRUE;
+            // // Ready
+            // $this->resize = TRUE;
 
         }
 
-        // Don't resize
-        else { $this->resize = FALSE; }
+        // // Don't resize
+        // else { $this->resize = FALSE; }
+
+        // Ready 2 -> asi siempre se podra hacer el set quality
+        $this->resize = TRUE;
 
     }
 

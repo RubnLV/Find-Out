@@ -13,3 +13,10 @@
         }
     }
 }
+.linkLugar{
+    text-decoration: none;
+    color: #000;
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+}

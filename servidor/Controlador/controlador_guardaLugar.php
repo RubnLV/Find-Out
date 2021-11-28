@@ -151,6 +151,7 @@ $respuesta = [];
                     //$respuesta['web'] = $dirImgWeb.' y '.$imagenWeb;
                     if(is_dir($dirImgWeb))
                     {
+                        //$respuesta['dirweb'] = 'existe';
                         if(!file_exists($imagenWeb))
                         {
                             if(file_exists($archivo))
@@ -165,7 +166,8 @@ $respuesta = [];
                                 $img->clear_cache();
         
                                 $guardadoWeb = true;
-                                //$respuesta['guardadoWeb 1'] = $guardadoWeb;
+                                // $respuesta['guardadoWeb 1'] = $guardadoWeb;
+                                // $respuesta['imgweb1'] = $imagenWeb;
                             }else{
                                 $guardadoWeb = false;
                                 $respuesta['mensaje'] = 'No se a podido generar la imagen web';
@@ -174,9 +176,9 @@ $respuesta = [];
                             $respuesta['mensaje'] = 'La imagen web ya existe';
                         }
                         
-                        //$respuesta['dir'] = 'existe';
                     }else{
                         mkdir($dirImgWeb ,0777,true);
+                        // $respuesta['mkdirWeb'] = 'creado';
                         if(!file_exists($imagenWeb))
                         {
                             if(file_exists($archivo))
@@ -191,7 +193,8 @@ $respuesta = [];
                                 $img->clear_cache();
         
                                 $guardadoWeb = true;
-                                //$respuesta['guardadoWeb 2'] = $guardadoWeb;
+                                // $respuesta['guardadoWeb 2'] = $guardadoWeb;
+                                // $respuesta['imgweb2'] = $imagenWeb;
                             }else{
                                 $guardadoWeb = false;
                                 $respuesta['mensaje'] = 'No se a podido generar la imagen web 2';
@@ -209,9 +212,10 @@ $respuesta = [];
                 }
                 //echo json_encode($respuesta);
 //----          
-                if(empty($respuesta)){
+                if(empty($respuesta))
+                {
                     if($guardadoWeb)
-                    { //#fallo
+                    { 
                         $lugar = new GuardaDireccion();
                         $nuevoLugar = $lugar->guardaLugar($nombreLugar,$direccion,$coordenadas,$categoria,$descripcion,$imagenWeb);
                         echo json_encode($nuevoLugar);
@@ -228,7 +232,7 @@ $respuesta = [];
                 
                     // $respuesta['guardado-web'] = $guardadoWeb;
                     // $respuesta['imgWeb'] = $imagenWeb;
-            }else{ //#fallo
+            }else{ 
                 $lugar = new GuardaDireccion();
                 $nuevoLugar = $lugar->guardaLugar($nombreLugar,$direccion,$coordenadas,$categoria,$descripcion,$nombre_imagen_default);
                 echo json_encode($nuevoLugar);

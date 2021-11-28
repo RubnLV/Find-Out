@@ -22,6 +22,7 @@
                 $sql .= ' FROM lugares';
                 $sql .= ' left outer join categorias on lugares.categoria_id = categorias.categoria_id';
                 $sql .= ' left outer join imagenes on lugares.id_lugar = imagenes.id_lugar';
+                $sql .= ' ORDER BY lugares.id_lugar desc';
                 $consulta = $this->db->prepare($sql);
                 $consulta->execute();
 
