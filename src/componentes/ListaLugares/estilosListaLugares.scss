@@ -2,3 +2,17 @@
     margin: 0 !important;
     padding: 0 1% !important;
 }
+.paginacion{
+    margin: 15px 0 !important;
+    display: flex !important;
+    justify-content: space-between;
+    .btnAnterior, .btnSiguiente{
+        background-color: #0c2233c7;
+        border-color: #0c2233c7;
+        &:hover{
+            background-color: #0C2233;
+            border-color: #0C2233;
+            color: #FFC045;
+        }
+    }
+}

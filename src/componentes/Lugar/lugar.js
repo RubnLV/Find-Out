@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Image, Alert } from 'react-bootstrap';
 import { useHistory, useParams } from "react-router";
 
-import Mapa from './../Mapa/mapa';
 import {borraToken, getToken, validaToken, enviaDatos} from "../hooks/funciones";
+import Mapa from './../Mapa/mapa';
+import Menu from "./../Menu/NavBar";
+import Footer from "./../Footer/footer";
+import './estilosLugar.scss';
+
 
 const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_infoLugar.php';
 
@@ -66,24 +70,25 @@ export default function Lugar(){
 
     return(
         <Container fluid className="infoLugar">
+            <Row><Menu /></Row>
             <Row><h1 className="tituloLugar">{informacion.nombre}</h1></Row>
             <Row>
-                <Col xs={12} md={12} lg={6}>
-                    <Image fluid  src={host + informacion.urlImagen.replace('./../', '/')} rounded />
+                <Col xs={12} md={7} lg={6} className="img-lugar">
+                    <Image fluid  src={host + informacion.urlImagen.replace('./../', '/')} rounded alt={informacion.nombre}/>
                 </Col>
-                <Col xs={12} md={12} lg={6}>
-                    <p>Dirección : {informacion.direccion}</p>
+                <Col xs={12} md={4} lg={6} className="detalles-lugar">
+                    <p className="direccion-lugar">Dirección : {informacion.direccion}</p>
                     <p>{informacion.descripcion}</p>
                     <p>Categoria: {informacion.categoria}</p>
                 </Col>
             </Row>
             {informacion.coordenadas &&
-                <Row>
+                <Row className="mapa-lugar">
                     <Mapa coordenadas={informacion.coordenadas} />
                 </Row>
             }
             <Row>
-                footer
+                <Footer />
             </Row>
         </Container>
     );

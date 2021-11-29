@@ -6,6 +6,7 @@ import {borraToken, getToken, validaToken, enviaDatos} from "../hooks/funciones"
 import {MdAddLocationAlt} from 'react-icons/md'
 import ListaLugares from "./../ListaLugares/listaLugares";
 import Menu from "./../Menu/NavBar";
+import Footer from "./../Footer/footer";
 import "./estilosInicio.scss";
 
 const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_cargaDirecciones.php';
@@ -74,7 +75,7 @@ export default function Inicio() {
                 </Button>
             </Row>
             <Row>
-                footer
+                <Footer />
             </Row>  
         </Container>
     )

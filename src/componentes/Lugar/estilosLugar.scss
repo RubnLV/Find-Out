@@ -1,0 +1,33 @@
+.infoLugar{
+    background-color: #0c2233d7;
+    .tituloLugar{
+        color: #FFC045;
+        font-family: 'Caveat', cursive;
+        font-size: 3em;
+        text-align: center;
+        margin: 15px 0;
+
+    }
+    .img-lugar{
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+    .detalles-lugar{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff;
+        font-family: 'Inter', sans-serif;
+        font-size: 1em;
+        padding-right: 15px;
+        .direccion-lugar{
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+    }
+    .mapa-lugar{
+        margin-top: 20px;
+        padding: 0 15px;
+    }
+}

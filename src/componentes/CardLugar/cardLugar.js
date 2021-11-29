@@ -15,24 +15,26 @@ export default function CardLugar(props){
     // console.log(props.lugar);
     console.log(urlImagen);
     return(
-        <Link
-            to={`/Find-Out/id/${id_lugar}`}
-            className="linkLugar"
-        >
+        <>
+        <Button className="btnReportar"><Report size="1.2em" /></Button>
             <Card className="cardLugar">
-                <Button className="btnReportar"><Report size="1.2em" /></Button>
-                <Card.Img variant="top" src={host + urlImagen.replace('./../', '/')} />
-                <Card.Body>
-                    <Card.Title>{nombre}</Card.Title>
-                    <p>{direccion}</p>
-                    <Card.Text>
-                        {descripcion}
-                    </Card.Text>
-                    <div>
-                        <p>Categoria: {categoria}</p>
-                    </div>
-                </Card.Body>
+                
+                <Link
+                    to={`/Find-Out/id/${id_lugar}`}
+                    className="linkLugar"
+                >
+                    <Card.Img variant="top" loading="lazy" src={host + urlImagen.replace('./../', '/')} />
+                    <Card.ImgOverlay className="back-card">
+
+                        <Card.Title className="card-titulo">{nombre}</Card.Title>
+
+                        <Card.Text className="card-direccion">
+                            {direccion}
+                        </Card.Text>
+                    </Card.ImgOverlay>
+                </Link>
             </Card>
-        </Link>
+        </>
+
     );
 }

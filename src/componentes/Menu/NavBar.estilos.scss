@@ -1,5 +1,5 @@
 .NavBar {
-    background-color: #0a1537;
+    background-color: #0C2233;
     height: 80px;
     width: 100%;
     // position: fixed;
@@ -11,8 +11,11 @@
     .enlaceTitulo{
         text-decoration: none;
         .titulo{
-        color: #FFC300;
-    }
+            color: #FFC045;
+            font-family: 'Comforter', cursive;
+            font-size: 2.2em;
+            line-height: 3em;
+        }
     }
     nav{
         ul{
@@ -30,10 +33,10 @@
                     &:hover{
                         transition: 0.3s ease;
                         //border-bottom: 2px solid #fff;
-                        color: #FFC300;
+                        color: #FFC045;
                     }
                     &.active{
-                        color: #FFC300;
+                        color: #FFC045;
                     }
                 }
             }
@@ -45,7 +48,7 @@
         
         .MenuIcon{
             //size: 50px;
-            color: #FFC300;
+            color: #FFC045;
             position: absolute;
             right: 4%;
             cursor: pointer;
@@ -73,15 +76,15 @@
                 top: 80px;
                 width: 100vw;
                 //height: 100vh;
-                background-color: #0a1537;
-                border-top: 5px solid #ffc4009d;
+                background-color: #0C2233;
+                border-top: 5px solid #FFC045;
                 z-index: 100;
                 
                 li{                   
                     a{
                         padding-left: 5%;
                         &:hover{
-                            color: #FFC300;
+                            color: #FFC045;
                             border-bottom: none;
                             margin-left: 1%;
                             transition: all 0.2s ease-in;

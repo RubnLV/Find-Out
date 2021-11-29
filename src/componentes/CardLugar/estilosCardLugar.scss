@@ -1,16 +1,33 @@
 .cardLugar{
     background-color: #647ecc80 !important;
-    .btnReportar{
-        display: block !important;
-        width: 40px !important;
-        padding: 5px 0px !important;
-        color: #0a1537 !important;
-        background-color: transparent !important;
-        border: none !important;
+    .back-card{
+        background-color: #00000057;
+        color: #fff;
         &:hover{
-            color: #fff !important;
-            //background-color: #0a1537 !important;
+            background-color: #00000013;
         }
+        .card-titulo{
+            position: absolute;
+            bottom: 40px;
+        }
+        .card-direccion{
+            position: absolute;
+            bottom: 10px;
+            font-size: 0.8em;
+        }
+    }
+
+}
+.btnReportar{
+    display: block !important;
+    width: 20px !important;
+    padding: 2px 0px !important;
+    color: #065471 !important;
+    background-color: transparent !important;
+    border: none !important;
+    &:hover{
+        color: #0C2233 !important;
+        //background-color: #0a1537 !important;
     }
 }
 .linkLugar{

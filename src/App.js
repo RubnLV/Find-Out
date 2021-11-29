@@ -28,7 +28,16 @@ function App() {
           </Route>
           <Route path="/Find-Out/id/:id" exact={true}>
             <Lugar />
-          </Route>     
+          </Route>
+          <Route path="/Descubre" exact={true}>
+          Descubre
+          </Route>  
+          <Route path="/Que-es-Find-Out" exact={true}>
+          Que-es-Find-Out
+          </Route>
+          <Route path="/Contacto" exact={true}>
+          Contacto
+          </Route> 
         </Switch>
       </Router>
       
