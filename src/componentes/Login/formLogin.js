@@ -6,6 +6,7 @@ import { validaDatosLogin } from "./validaDatosLogin"
 
 import './../estilos/estilosLoginRegistro.scss';
 
+
 const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_login.php';
 
 export default function FormLogin() {
@@ -75,7 +76,7 @@ export default function FormLogin() {
     return (
         <Container fluid className="align-middle contenedorInicio" style={{ margin: "0px", padding: "0px" }}>
             <Row className="barraSuperior">
-                <h3 className="titulo">Finf Out</h3>
+                <h3 className="titulo">Find Out</h3>
             </Row>
             <Row className="contenedor">
                 <Col lg={5} md={6} xs={9} >

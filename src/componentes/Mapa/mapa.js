@@ -15,6 +15,7 @@ export default function Mapa(props) {
       <Map
           defaultZoom={17}
           height={440}
+          style={{padding: 0}}
           width="100%"
           controls={true}
           markerIconSrc={markerUrl}

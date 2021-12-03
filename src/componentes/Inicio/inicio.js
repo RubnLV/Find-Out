@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Button} from 'react-bootstrap';
 import { useHistory } from "react-router";
-import {borraToken, getToken, validaToken, enviaDatos} from "../hooks/funciones";
+import { Helmet } from "react-helmet";
 
+import {borraToken, getToken, validaToken, enviaDatos} from "./../hooks/funciones";
+//import {Metas} from './../hooks/metadatos';
 import {MdAddLocationAlt} from 'react-icons/md'
 import ListaLugares from "./../ListaLugares/listaLugares";
 import Menu from "./../Menu/NavBar";
@@ -14,6 +16,16 @@ const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_cargaD
 export default function Inicio() {
     const history = useHistory();
     const [direcciones, setDirecciones] = useState(null);
+    const metas = {
+        og_title: "Find Out App", 
+        og_type: "Website",
+        og_image: "http://localhost/FindOut/assets/imagenes/Find-Out.png",
+        og_url: "http://localhost:3000/",
+        og_description: "En Find Out podras descubrir sitios interesantes y publicar tus sitios favoritos para los demas. Sorprendete con los diversos lugares que puedes entrar en nuestra app.",
+        og_siteName: "Find Out Aplication Web",
+        twitter_card: "summary_large_image",
+        twitter_image_alt: "Find Out"
+    }
 
     useEffect(() => {
         async function cargaTkn() {
@@ -51,8 +63,19 @@ export default function Inicio() {
     //console.log(direcciones);
 
     return (
+        <>
         
         <Container fluid>
+        <Helmet>
+            <meta property="og:title" content={metas.og_title} />
+            <meta property="og:type" content={metas.og_type} />
+            <meta property="og:image" content={metas.og_image} />
+            <meta property="og:url" content={metas.og_url} />
+            <meta name="twitter:card" content={metas.twitter_card} />
+            <meta property="og:description" content={metas.og_description} />
+            <meta property="og:site_name" content={metas.og_siteName} />
+            <meta name="twitter:image:alt" content={metas.twitter_image_alt} />
+        </Helmet>
             <Row
             style={{
                 zIndex: "100"
@@ -78,5 +101,6 @@ export default function Inicio() {
                 <Footer />
             </Row>  
         </Container>
+        </>
     )
 }

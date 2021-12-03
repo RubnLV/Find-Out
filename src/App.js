@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container} from "react-bootstrap";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 //import Login from './componentes/Login/login';
@@ -26,7 +26,7 @@ function App() {
           <Route path="/Nuevo-Lugar" exact={true}>
             <NuevoLugar />
           </Route>
-          <Route path="/Find-Out/id/:id" exact={true}>
+          <Route path="/Find-Out/:nombre/id/:id" exact={true}>
             <Lugar />
           </Route>
           <Route path="/Descubre" exact={true}>

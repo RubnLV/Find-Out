@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Image, Alert } from 'react-bootstrap';
 import { useHistory, useParams } from "react-router";
+import { Helmet } from 'react-helmet';
 
 import {borraToken, getToken, validaToken, enviaDatos} from "../hooks/funciones";
 import Mapa from './../Mapa/mapa';
@@ -17,6 +18,16 @@ export default function Lugar(){
     const history = useHistory();
     const params = useParams();
     const [informacion, setInformacion] = useState(null);
+    // const metas = {
+    //     og_title: nombre, 
+    //     og_type: "Website",
+    //     og_image: "http://localhost/FindOut/assets/imagenes/Find-Out.png",
+    //     og_url: "http://localhost:3000/",
+    //     og_description: "En Find Out podras descubrir sitios interesantes y publicar tus sitios favoritos para los demas. Sorprendete con los diversos lugares que puedes entrar en nuestra app.",
+    //     og_siteName: "Find Out Aplication Web",
+    //     twitter_card: "summary_large_image",
+    //     twitter_image_alt: "Find Out"
+    // }
 
     const host = "http://localhost/FindOut";
 
@@ -65,11 +76,24 @@ export default function Lugar(){
         );
     }
 
-    console.log(params.id);
-    console.log(informacion);
+    // console.log(params.id);
+    // console.log(informacion);
+    console.log(window.location.href);
 
     return(
+        <>
+        
         <Container fluid className="infoLugar">
+        <Helmet>
+            <meta property="og:title" content={informacion.nombre} />
+            <meta property="og:type" content="Website" />
+            <meta property="og:image" content={host + informacion.urlImagen.replace('./../', '/')} rounded alt={informacion.nombre} />
+            <meta property="og:url" content={window.location.href} />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta property="og:description" content={informacion.descripcion} />
+            <meta property="og:site_name" content="Find Out Aplication Web" />
+            <meta name="twitter:image:alt" content="summary_large_image" />
+        </Helmet>
             <Row><Menu /></Row>
             <Row><h1 className="tituloLugar">{informacion.nombre}</h1></Row>
             <Row>
@@ -91,5 +115,6 @@ export default function Lugar(){
                 <Footer />
             </Row>
         </Container>
+        </>
     );
 }

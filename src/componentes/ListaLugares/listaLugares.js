@@ -53,7 +53,7 @@ export default function ListaLugares(props){
     console.log(numRegistros);
     return(
         <>
-        <Row xs={1} md={3} lg={4} className="g-2 gridLista">
+        <Row xs={1} md={3} lg={4} className="g-3 gridLista">
             {filtroLugares().map((lugar, idx) => (
                 <Col key={idx}>
                     <CardLugar

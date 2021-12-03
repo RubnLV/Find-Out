@@ -1,39 +1,54 @@
 .cardLugar{
-    background-color: #647ecc80 !important;
-    .back-card{
-        background-color: #00000057;
-        color: #fff;
-        &:hover{
-            background-color: #00000013;
+    background-color: #0C2233 !important;
+    .info-card{
+        p{
+            color: #FFC045;
+            margin-top: 0;
+            margin-bottom: 5px;
+            padding-left: 6px;
+            padding-right: 6px;
         }
         .card-titulo{
-            position: absolute;
-            bottom: 40px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.4em;
+            letter-spacing: 1.2px;
         }
         .card-direccion{
-            position: absolute;
-            bottom: 10px;
-            font-size: 0.8em;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7em;
         }
     }
-
-}
-.btnReportar{
-    display: block !important;
-    width: 20px !important;
-    padding: 2px 0px !important;
-    color: #065471 !important;
-    background-color: transparent !important;
-    border: none !important;
+    transition: all .2.5s ease-in-out;
     &:hover{
-        color: #0C2233 !important;
-        //background-color: #0a1537 !important;
+        transform: scale(1.01);
     }
-}
-.linkLugar{
-    text-decoration: none;
-    color: #000;
-    &:focus, &:hover, &:visited, &:link, &:active {
+
+    .linkLugar{
         text-decoration: none;
+        color: #000;
+        &:focus, &:hover, &:visited, &:link, &:active {
+            text-decoration: none;
+        }
     }
 }
+.opciones{
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-bottom: 4px;
+    padding-right: 10px;
+    .btnReportar, .btnCompartir{
+        display: block !important;
+        width: 20px !important;
+        padding: 2px 0px !important;
+        color: #065471 !important;
+        background-color: transparent !important;
+        border: none !important;
+        &:hover{
+            color: #0A91AB !important;
+            //background-color: #0a1537 !important;
+        }
+    }
+}
+
+

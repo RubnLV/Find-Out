@@ -10,6 +10,21 @@
         flex-direction: column;
         padding: 15px;
         border: 1px solid #0a1537;
+        .divInfo{
+            display: flex !important;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0 !important;
+            .btnInfo{
+                padding: 0 !important;
+                background-color: transparent !important;
+                border: none !important;
+                color: #0A91AB !important;
+                &:hover{
+                    color: #FFC300 !important;
+                }
+            }
+        }
     }
     .iptImagen{
         display: none;
@@ -40,4 +55,5 @@
             background-color: #0a1537;
         }
     }
+    
 }

@@ -8,15 +8,17 @@
     height: 80px;
     margin: 0 !important;
     padding: 0 !important;
-}
-.titulo{
+    .titulo{
     display: flex;
-    color: #FFC300;
-    align-items: center;
-    font-size: 2em;
+    color: #FFC045;
+    font-family: 'Comforter', cursive;
+    font-size: 3em;
+    line-height: 3em;
     padding-left: 40px;
-
+    letter-spacing: 4px;
+    }
 }
+
 .contenedor{
     display: flex;
     justify-content: center;
