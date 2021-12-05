@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { Row, Col, Alert, Button } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import {BiArrowFromLeft as Siguiente} from 'react-icons/bi';
+import {BiArrowFromRight as Anterior} from 'react-icons/bi';
+
 
 import CardLugar from './../CardLugar/cardLugar';
 //import Paginacion from './../Paginacion/paginacion';
@@ -65,20 +67,18 @@ export default function ListaLugares(props){
         {lugares.length > 1 &&
             <Row className="paginacion">
             <Button
-            variant="primary"
             className="btnAnterior"
             style={{width: "10%"}}
             onClick={prevPage}
             >
-                Anterior
+                <Anterior />
             </Button>
             <Button
-            variant="primary"
             className="btnSiguiente"
             style={{width: "10%"}}
             onClick={nextPage}
             >
-                Siguiente
+                <Siguiente />
             </Button>
     </Row>
         }

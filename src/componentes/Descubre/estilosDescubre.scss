@@ -1,0 +1,44 @@
+.listaCategorias{
+    background-color: #0c2233d7;
+    height: 100%;
+    .contenedor-categorias{
+    display: flex !important;
+    justify-content: center;
+    .linkCategoria{
+        text-decoration: none;
+        color: #000;
+        &:focus, &:hover, &:visited, &:link, &:active {
+            text-decoration: none;
+        }
+    }
+    .cardCategoria{
+        .overlayCategoria{
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.233);
+            padding: 0 !important;
+
+            &:hover{
+                background-color: transparent;
+                transition: background-color 250ms 100ms;
+            }
+            .tituloCategoria{
+                font-family: 'Comforter', cursive;
+                font-size: 5em;
+                color: #FFC045;
+            }
+        }
+        .overlayCategoria:hover div{
+            opacity: 0;
+            transition: opacity 250ms 100ms;
+        }
+    }
+}
+}
+
+@media (max-width: 760px){
+    .tituloCategoria{
+        font-size: 2em !important;
+    }
+}

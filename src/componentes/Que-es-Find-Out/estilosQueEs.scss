@@ -1,0 +1,40 @@
+.divPadre{
+    background-color: #0c2233d7;
+    height: 100%;
+    .divInfo{
+    display: flex !important;
+    justify-content: center;
+    padding: 0 10% !important;
+    .info-text{
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        padding-top: 25px;
+        padding-bottom: 25px;        
+        p{
+            color: #fff;
+            text-align: center;
+            font-family: 'Inter', sans-serif;            
+            span{
+                color: #FFC045;
+                font-size: 1.2em;
+                font-weight: 500;
+                padding-bottom: 5px;
+            }
+        }
+    }
+    .info-img{
+        padding-top: 25px;
+        padding-bottom: 25px;
+        .img-borde{
+            border-radius: 10px;
+        }
+    }
+    .info-redes{
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        color: #FFC045 !important;
+    }
+}
+}

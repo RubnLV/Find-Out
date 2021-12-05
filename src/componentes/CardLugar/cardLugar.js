@@ -20,23 +20,12 @@ export default function CardLugar(props){
     console.log(urlImagen);
     return(
         <>
+        < div className="tarjeta">
             <div className="opciones">
                 <Button className="btnReportar"><Report size="1.3em" /></Button>
                 <CopyToClipboard text={rutaLugar}>
                     <Button className="btnCompartir" onClick={() => toast.success('Url Copiada')}><Shared size="1.3em" /></Button>
-                </CopyToClipboard>
-                <Toaster 
-                    position="top-center"
-                    reverseOrder={false}
-                    toastOptions={{
-                        className: '',
-                        duration: 2000,
-                        style: {
-                          background: '#0c2233',
-                          color: '#fff',
-                        }
-                    }}
-                />
+                </CopyToClipboard>                
             </div>
             <Card className="cardLugar">                
                 <Link
@@ -58,7 +47,19 @@ export default function CardLugar(props){
                     <p className="card-direccion">{direccion}</p>
                 </div>
             </Card>
-            
+        </ div>
+        <Toaster 
+                    position="top-center"
+                    reverseOrder={false}
+                    toastOptions={{
+                        className: '',
+                        duration: 2000,
+                        style: {
+                          background: '#0c2233',
+                          color: '#fff',
+                        }
+                    }}
+                />
         </>
 
     );

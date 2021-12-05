@@ -1,53 +1,65 @@
-.cardLugar{
-    background-color: #0C2233 !important;
-    .info-card{
-        p{
-            color: #FFC045;
-            margin-top: 0;
-            margin-bottom: 5px;
-            padding-left: 6px;
-            padding-right: 6px;
+.tarjeta{
+    .cardLugar{
+        background-color: #0C2233 !important;
+        .info-card{
+            p{
+                color: #fff;
+                margin-top: 0;
+                margin-bottom: 5px;
+                padding-left: 6px;
+                padding-right: 6px;
+                // &:hover{
+                //     color: #FFC045;
+                //     transition: color 50ms 50ms;
+                // }
+            }
+            .card-titulo{
+                font-family: 'Caveat', cursive;
+                font-size: 1.4em;
+                letter-spacing: 1.2px;
+            }
+            .card-direccion{
+                font-family: 'Inter', sans-serif;
+                font-size: 0.7em;
+            }
         }
-        .card-titulo{
-            font-family: 'Caveat', cursive;
-            font-size: 1.4em;
-            letter-spacing: 1.2px;
-        }
-        .card-direccion{
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7em;
-        }
-    }
-    transition: all .2.5s ease-in-out;
-    &:hover{
-        transform: scale(1.01);
-    }
+        // transition: all .2.5s ease-in-out;
+        
 
-    .linkLugar{
-        text-decoration: none;
-        color: #000;
-        &:focus, &:hover, &:visited, &:link, &:active {
+        .linkLugar{
             text-decoration: none;
+            color: #000;
+            &:focus, &:hover, &:visited, &:link, &:active {
+                text-decoration: none;
+            }
         }
     }
-}
-.opciones{
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    margin-bottom: 4px;
-    padding-right: 10px;
-    .btnReportar, .btnCompartir{
-        display: block !important;
-        width: 20px !important;
-        padding: 2px 0px !important;
-        color: #065471 !important;
-        background-color: transparent !important;
-        border: none !important;
-        &:hover{
-            color: #0A91AB !important;
-            //background-color: #0a1537 !important;
+    .opciones{
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        margin-bottom: 4px;
+        padding-right: 10px;
+        .btnReportar, .btnCompartir{
+            display: block !important;
+            width: 20px !important;
+            padding: 2px 0px !important;
+            color: #065471 !important;
+            background-color: transparent !important;
+            border: none !important;
+            &:hover{
+                color: #0A91AB !important;
+                //background-color: #0a1537 !important;
+            }
         }
+    }
+    &:hover {
+        transform: scale(1.05);
+        transition: transform 50ms 50ms;
+    }
+    &:hover .info-card p{
+        color: #FFC045;
+        transition: color 50ms 50ms;
     }
 }
 

@@ -1,17 +1,20 @@
 import React from "react";
 import { Container,Row, Col } from "react-bootstrap";
+import {FiInstagram} from'react-icons/fi';
+import {FiMail} from'react-icons/fi';
 
+import Enlaces from './../Menu/Enlaces';
 import './estilosFooter.scss';
 
 export default function Footer() {
     return(
         <Container className="footer">
-            <Row className="enlaces">
-                <Col xs={6} md={6} lg={6}>
-                link
+            <Row className="">
+                <Col xs={12} md={6} lg={6} className="enlaces">
+                    <Enlaces />
                 </Col>
-                <Col xs={6} md={6} lg={6}>
-                link 2
+                <Col xs={12} md={6} lg={6} className="enlaces">
+                    <FiInstagram size="1.8em"/>&nbsp;&nbsp;<FiMail size="1.8em"/>
                 </Col>
             </Row>
             <Row className="info">
@@ -19,7 +22,7 @@ export default function Footer() {
                     &copy; {new Date().getFullYear()} Copyright: Find Out
                 </p>
                 <p>
-                    Creador: Rubén López Valenzuela
+                    Desarrollado por: Rubén López Valenzuela
                 </p>
             </Row>
         </Container>

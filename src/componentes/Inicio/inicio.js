@@ -64,43 +64,42 @@ export default function Inicio() {
 
     return (
         <>
-        
-        <Container fluid>
-        <Helmet>
-            <meta property="og:title" content={metas.og_title} />
-            <meta property="og:type" content={metas.og_type} />
-            <meta property="og:image" content={metas.og_image} />
-            <meta property="og:url" content={metas.og_url} />
-            <meta name="twitter:card" content={metas.twitter_card} />
-            <meta property="og:description" content={metas.og_description} />
-            <meta property="og:site_name" content={metas.og_siteName} />
-            <meta name="twitter:image:alt" content={metas.twitter_image_alt} />
-        </Helmet>
-            <Row
-            style={{
-                zIndex: "100"
-            }}>
-                <Menu />
-            </Row>
-            <Row 
-            style={{
-                marginTop: "20px",
-                zIndex: "10"
-            }}>
-                <ListaLugares lugares={direcciones} />
-            </Row>
-            <Row>
-                <Button
-                    className="btnNuevoLugar"
-                    onClick={() => history.push('/Nuevo-Lugar')}
-                >
-                    <MdAddLocationAlt size="1.5em"/>
-                </Button>
-            </Row>
-            <Row>
-                <Footer />
-            </Row>  
-        </Container>
+            <Container fluid>
+                <Helmet>
+                    <meta property="og:title" content={metas.og_title} />
+                    <meta property="og:type" content={metas.og_type} />
+                    <meta property="og:image" content={metas.og_image} />
+                    <meta property="og:url" content={metas.og_url} />
+                    <meta name="twitter:card" content={metas.twitter_card} />
+                    <meta property="og:description" content={metas.og_description} />
+                    <meta property="og:site_name" content={metas.og_siteName} />
+                    <meta name="twitter:image:alt" content={metas.twitter_image_alt} />
+                </Helmet>
+                <Row
+                    style={{
+                        zIndex: "100"
+                    }}>
+                    <Menu />
+                </Row>
+                <Row
+                    style={{
+                        marginTop: "20px",
+                        zIndex: "10"
+                    }}>
+                    <ListaLugares lugares={direcciones} />
+                </Row>
+                <Row>
+                    <Button
+                        className="btnNuevoLugar"
+                        onClick={() => history.push('/Nuevo-Lugar')}
+                    >
+                        <MdAddLocationAlt size="1.5em" />
+                    </Button>
+                </Row>
+                <Row>
+                    <Footer />
+                </Row>
+            </Container>
         </>
     )
 }

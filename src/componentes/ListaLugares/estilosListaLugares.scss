@@ -7,11 +7,20 @@
     display: flex !important;
     justify-content: space-between;
     .btnAnterior, .btnSiguiente{
-        background-color: #0c2233c7;
+        display: flex !important;
+        justify-content: center;
+        padding: 5px 0 !important;
+        background-color: #0c2233c7 !important;
         border-color: #0c2233c7;
+        max-width: 150px;
         &:hover{
-            background-color: #0C2233;
-            border-color: #0C2233;
+            background-color: #0C2233 !important;
+            border-color: #0C2233 !important;
+            color: #FFC045;
+        }
+        &:active{
+            background-color: #0C2233 !important;
+            border: none !important;
             color: #FFC045;
         }
     }

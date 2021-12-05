@@ -13,9 +13,6 @@ export default function Enlaces(props){
             <li onClick={() => props.menuAbierto && props.closeMenu()}>
                 <NavLink exact to="/Que-es-Find-Out">¿Que es Find Out?</NavLink>
             </li>
-            <li onClick={() => props.menuAbierto && props.closeMenu()}>
-                <NavLink exact to="/Contacto">Contacto</NavLink>
-            </li>
         </ul>
     )
 }
