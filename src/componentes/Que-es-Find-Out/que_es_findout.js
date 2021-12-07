@@ -1,24 +1,39 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { useHistory } from "react-router-dom";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import {FiInstagram} from'react-icons/fi';
 import {FiMail} from'react-icons/fi';
 
+import {borraToken, getToken, validaToken} from "./../hooks/funciones";
 import Menu from "./../Menu/NavBar";
 import Footer from "./../Footer/footer";
 import './estilosQueEs.scss';
 
 export default function QueEs() {
+    const history = useHistory();
     const metas = {
         og_title: "¿Que es Find Out?", 
         og_type: "Website",
-        og_image: "http://localhost/FindOut/assets/imagenes/Find-Out.png",
-        og_url: "http://localhost:3000/Que-es-Find-Out",
+        og_image: "/assets/imagenes/Find-Out.png",
+        og_url: window.location.href,
         og_description: "En Find Out podras descubrir sitios interesantes y publicar tus sitios favoritos para los demas. Sorprendete con los diversos lugares que puedes entrar en nuestra app.",
         og_siteName: "Find Out Aplication Web",
         twitter_card: "summary_large_image",
         twitter_image_alt: "Find Out"
     }
+    useEffect(() => {
+        async function cargaTkn() {
+            const keys = getToken();
+            console.log('login-getTkn');
+            console.log(keys);
+            if(!validaToken(keys)){
+                borraToken();
+                history.push('/Login')
+            }
+        }
+        cargaTkn();
+    },[]);
 
     return(
         <>
@@ -49,7 +64,7 @@ export default function QueEs() {
                         </p>
                    </Col>
                    <Col xs={12} md={6} lg={6} className="info-img">
-                        <Image src="http://localhost/FindOut/assets/imagenes/descubrir.jpg" fluid className="img-borde"/>
+                        <Image src="/assets/imagenes/descubrir.jpg" fluid className="img-borde"/>
                    </Col>
                     <Col xs={12} md={6} lg={6} className="info-text">
                         <p>
@@ -60,7 +75,7 @@ export default function QueEs() {
                         
                     </Col>
                    <Col xs={12} md={6} lg={6} className="info-img">
-                        <Image src="http://localhost/FindOut/assets/imagenes/contribuye.jpg" fluid className="img-borde"/>
+                        <Image src="/assets/imagenes/contribuye.jpg" fluid className="img-borde"/>
                     </Col>
                     <Col xs={12} md={6} lg={6} className="info-text">
                         <p>

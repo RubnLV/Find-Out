@@ -12,9 +12,10 @@ export default function CardLugar(props){
     const {lugar: {
         nombre, direccion, coordenadas, descripcion, urlImagen, id_lugar, categoria
     }, index} = props;
-    const host = "http://localhost/FindOut";
+    // const host = "http://localhost/FindOut";
     const ruta = useLocation();
-    const rutaLugar = `http://localhost:3000/Find-Out/${nombre.replace(/ /g, "-")}/id/${id_lugar}`;
+    // const rutaLugar = `http://localhost:3000/Find-Out/${nombre.replace(/ /g, "-")}/id/${id_lugar}`;
+    const rutaLugar = `http://rubenlv.com/Find-Out/${nombre.replace(/ /g, "-")}/id/${id_lugar}`;
     
     console.log(ruta);
     console.log(urlImagen);
@@ -32,7 +33,7 @@ export default function CardLugar(props){
                     to={`/Find-Out/${nombre.replace(/ /g, "-")}/id/${id_lugar}`}
                     className="linkLugar"
                 >
-                    <Card.Img variant="top" loading="lazy" src={host + urlImagen.replace('./../', '/')} />
+                    <Card.Img variant="top" loading="lazy" src={urlImagen.replace('./../', '/')} />
                     <Card.ImgOverlay className="back-card">
 
                         {/* <Card.Title className="card-titulo">{nombre}</Card.Title>
@@ -48,18 +49,18 @@ export default function CardLugar(props){
                 </div>
             </Card>
         </ div>
-        <Toaster 
-                    position="top-center"
-                    reverseOrder={false}
-                    toastOptions={{
-                        className: '',
-                        duration: 2000,
-                        style: {
-                          background: '#0c2233',
-                          color: '#fff',
-                        }
-                    }}
-                />
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+                toastOptions={{
+                    className: '',
+                    duration: 2000,
+                    style: {
+                        background: '#0c2233',
+                        color: '#fff',
+                    }
+                }}
+            />
         </>
 
     );

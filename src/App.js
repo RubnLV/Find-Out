@@ -41,6 +41,9 @@ function App() {
           <Route path="/Que-es-Find-Out" exact={true}>
             <QueEs />
           </Route>
+          <Route path="*">
+            <FormLogin />
+          </Route>
         </Switch>
       </Router>
 

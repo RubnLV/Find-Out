@@ -10,7 +10,9 @@ import Footer from "./../Footer/footer";
 import './estilosLugar.scss';
 
 
-const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_infoLugar.php';
+// const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_infoLugar.php';
+// const URL_CONTROLADOR = './Controlador/controlador_infoLugar.php';
+const URL_CONTROLADOR = '/Controlador/controlador_infoLugar.php';
 
 
 export default function Lugar(){
@@ -18,18 +20,8 @@ export default function Lugar(){
     const history = useHistory();
     const params = useParams();
     const [informacion, setInformacion] = useState(null);
-    // const metas = {
-    //     og_title: nombre, 
-    //     og_type: "Website",
-    //     og_image: "http://localhost/FindOut/assets/imagenes/Find-Out.png",
-    //     og_url: "http://localhost:3000/",
-    //     og_description: "En Find Out podras descubrir sitios interesantes y publicar tus sitios favoritos para los demas. Sorprendete con los diversos lugares que puedes entrar en nuestra app.",
-    //     og_siteName: "Find Out Aplication Web",
-    //     twitter_card: "summary_large_image",
-    //     twitter_image_alt: "Find Out"
-    // }
 
-    const host = "http://localhost/FindOut";
+    // const host = "http://localhost/FindOut";
 
     useEffect(() => {
         async function cargaTkn() {
@@ -87,7 +79,7 @@ export default function Lugar(){
         <Helmet>
             <meta property="og:title" content={informacion.nombre} />
             <meta property="og:type" content="Website" />
-            <meta property="og:image" content={host + informacion.urlImagen.replace('./../', '/')} rounded alt={informacion.nombre} />
+            <meta property="og:image" content={informacion.urlImagen.replace('./../', '/')} rounded alt={informacion.nombre} />
             <meta property="og:url" content={window.location.href} />
             <meta name="twitter:card" content="summary_large_image" />
             <meta property="og:description" content={informacion.descripcion} />
@@ -98,7 +90,7 @@ export default function Lugar(){
             <Row><h1 className="tituloLugar">{informacion.nombre}</h1></Row>
             <Row>
                 <Col xs={12} md={7} lg={6} className="img-lugar">
-                    <Image fluid  src={host + informacion.urlImagen.replace('./../', '/')} rounded alt={informacion.nombre}/>
+                    <Image fluid  src={informacion.urlImagen.replace('./../', '/')} rounded alt={informacion.nombre}/>
                 </Col>
                 <Col xs={12} md={4} lg={6} className="detalles-lugar">
                     <p className="direccion-lugar">Dirección : {informacion.direccion}</p>

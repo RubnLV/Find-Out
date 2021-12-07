@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom";
 import { Row, Col, Alert, Button } from 'react-bootstrap';
 import {BiArrowFromLeft as Siguiente} from 'react-icons/bi';
 import {BiArrowFromRight as Anterior} from 'react-icons/bi';
@@ -24,7 +25,10 @@ export default function ListaLugares(props){
                 </p>
                 <hr />
                 <p className="mb-0">
-                    Puede añadir lugares con el boton "Nuevo Lugar"
+                    Puede añadir lugares con el boton
+                    <Link exact to="/Nuevo-Lugar" >
+                    "Nuevo Lugar"
+                    </Link>
                 </p>
             </Alert>
         );

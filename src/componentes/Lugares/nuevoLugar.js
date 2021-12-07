@@ -9,7 +9,8 @@ import Menu from "./../Menu/NavBar";
 
 import './estilosLugar.scss';
 
-const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_guardaLugar.php';
+// const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_guardaLugar.php';
+const URL_CONTROLADOR = '/Controlador/controlador_guardaLugar.php';
 
 export default function NuevoLugar() {
     const history = useHistory();
@@ -179,12 +180,12 @@ export default function NuevoLugar() {
                                                 A continuación te mostraremos dos maneras de obtener las coordenadas del lugar que deseas publicar.<br /><br />
                                                 1ª&#41; La primera forma es muy sencilla, solo tienes que buscar el lugar en google maps y a continuación copiar los parametros numericos que vienen despues del simbolo @.<br />&#40;Ejemplo: 40.230194,-3.5950157&#41;
                                                 <br /><br />
-                                                <img src={"http://localhost:80/FindOut/" + "assets/imagenes/obtenerCoords_1.png"} alt="Imagen" className="img-thumbnail" />
+                                                <img src={"/assets/imagenes/obtenerCoords_1.png"} alt="Imagen" className="img-thumbnail" />
                                                 <br /><br />
                                                 2ª&#41; La segunda forma tambien es muy sencilla, tienes que buscar el lugar lugar en google maps y hacer clic derecho exactamente sobre el marcador que te muestra, al hacer lo aparecera un panel con información del lugar siendo el primer parametro las coordenadas. Solo tienes que hacer clic izquierdo sobre ellas y se copiaran automaticamente a tu portapapeles.
                                             </p>
                                             <br />
-                                            <img src={"http://localhost:80/FindOut/" + "assets/imagenes/obtenerCoords_2.png"} alt="Imagen" className="img-thumbnail" />
+                                            <img src={"/assets/imagenes/obtenerCoords_2.png"} alt="Imagen" className="img-thumbnail" />
                                         </Offcanvas.Body>
                                     </Offcanvas>
                                 </Col>

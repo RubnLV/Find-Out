@@ -6,7 +6,8 @@ import { validaDatosRegistro } from './validaDatosRegistro';
 
 import './../estilos/estilosLoginRegistro.scss';
 
-const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_altaUsuario.php';
+// const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_altaUsuario.php';
+const URL_CONTROLADOR = '/Controlador/controlador_altaUsuario.php';
 
 export default function AltaUsuario() {
     const history = useHistory();
@@ -70,7 +71,7 @@ export default function AltaUsuario() {
             {
                 show &&
                 <Alert show={show} variant="success">
-                    <Alert.Heading>How's it going?!</Alert.Heading>
+                    <Alert.Heading>Grasias por Registrarte!</Alert.Heading>
                     {mensaje}
                     <hr />
                     <div className="d-flex justify-content-end">

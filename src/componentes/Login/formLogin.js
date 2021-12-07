@@ -7,7 +7,8 @@ import { validaDatosLogin } from "./validaDatosLogin"
 import './../estilos/estilosLoginRegistro.scss';
 
 
-const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_login.php';
+// const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_login.php';
+const URL_CONTROLADOR = '/Controlador/controlador_login.php';
 
 export default function FormLogin() {
     const history = useHistory();

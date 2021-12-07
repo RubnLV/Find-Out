@@ -13,7 +13,7 @@ export default function Footer() {
                 <Col xs={12} md={6} lg={6} className="enlaces">
                     <Enlaces />
                 </Col>
-                <Col xs={12} md={6} lg={6} className="enlaces">
+                <Col xs={12} md={6} lg={6} className="enlaces-redes">
                     <FiInstagram size="1.8em"/>&nbsp;&nbsp;<FiMail size="1.8em"/>
                 </Col>
             </Row>

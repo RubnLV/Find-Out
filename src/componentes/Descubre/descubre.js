@@ -1,20 +1,35 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 
+import {borraToken, getToken, validaToken, enviaDatos} from "./../hooks/funciones";
 import Menu from "./../Menu/NavBar";
 import Footer from "./../Footer/footer";
 import './estilosDescubre.scss';
 
 export default function Descrube(){
+    const history = useHistory();
+    useEffect(() => {
+        async function cargaTkn() {
+            const keys = getToken();
+            console.log('login-getTkn');
+            console.log(keys);
+            if(!validaToken(keys)){
+                borraToken();
+                history.push('/Login')
+            }
+        }
+        cargaTkn();
+    },[]);
+
     return(
         <>
             <Container fluid className="listaCategorias">
                 <Helmet>
                     <meta property="og:title" content="Find Out Categorias" />
                     <meta property="og:type" content="Website" />
-                    <meta property="og:image" content="http://localhost/FindOut/assets/imagenes/Find-Out.png" />
+                    <meta property="og:image" content="/assets/imagenes/Find-Out.png" />
                     <meta property="og:url" content={window.location.href} />
                     <meta name="twitter:card" content="summary_large_image" />
                     <meta property="og:description" content="Elige la categoria que mas te guste y encuentra el lugar que estas buscando" />
@@ -29,7 +44,7 @@ export default function Descrube(){
                         className="linkCategoria"
                     >
                         <Card className="cardCategoria">
-                            <Card.Img src="http://localhost/FindOut/assets/imagenes/spots.jpg" alt="" />
+                            <Card.Img src="/assets/imagenes/spots.jpg" alt="" />
                             <Card.ImgOverlay className="overlayCategoria">
                                 <Card.Title className="tituloCategoria"> Spots </Card.Title>
                             </Card.ImgOverlay>
@@ -43,7 +58,7 @@ export default function Descrube(){
                             className="linkCategoria"
                         >
                         <Card className="cardCategoria">
-                            <Card.Img src="http://localhost/FindOut/assets/imagenes/restaurantes.jpg" alt="" />
+                            <Card.Img src="/assets/imagenes/restaurantes.jpg" alt="" />
                             <Card.ImgOverlay className="overlayCategoria">
                                 <Card.Title className="tituloCategoria"> Restaurantes </Card.Title>
                             </Card.ImgOverlay>
@@ -56,7 +71,7 @@ export default function Descrube(){
                             className="linkCategoria"
                         >
                         <Card className="cardCategoria">
-                            <Card.Img src="http://localhost/FindOut/assets/imagenes/pubs.jpg" alt="" />
+                            <Card.Img src="/assets/imagenes/pubs.jpg" alt="" />
                             <Card.ImgOverlay className="overlayCategoria">
                                 <Card.Title className="tituloCategoria"> Pubs </Card.Title>
                             </Card.ImgOverlay>
@@ -69,7 +84,7 @@ export default function Descrube(){
                             className="linkCategoria"
                         > 
                         <Card className="cardCategoria">
-                            <Card.Img src="http://localhost/FindOut/assets/imagenes/lugares.jpg" alt="" />
+                            <Card.Img src="/assets/imagenes/lugares.jpg" alt="" />
                             <Card.ImgOverlay className="overlayCategoria">
                                 <Card.Title className="tituloCategoria"> Lugares </Card.Title>
                             </Card.ImgOverlay>

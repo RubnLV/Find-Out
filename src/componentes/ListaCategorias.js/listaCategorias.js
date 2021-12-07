@@ -11,7 +11,8 @@ import Menu from "../Menu/NavBar";
 import Footer from "../Footer/footer";
 // import "./estilosInicio.scss";
 
-const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_categorias.php';
+// const URL_CONTROLADOR = 'http://localhost/FindOut/Controlador/controlador_categorias.php';
+const URL_CONTROLADOR = '/Controlador/controlador_categorias.php';
 
 export default function Inicio() {
     const history = useHistory();
@@ -22,8 +23,8 @@ export default function Inicio() {
     const metas = {
         og_title: "Find Out App", 
         og_type: "Website",
-        og_image: "http://localhost/FindOut/assets/imagenes/Find-Out.png",
-        og_url: "http://localhost:3000/",
+        og_image: "/assets/imagenes/Find-Out.png",
+        og_url: window.location.href,
         og_description: "En Find Out podras descubrir sitios interesantes y publicar tus sitios favoritos para los demas. Sorprendete con los diversos lugares que puedes entrar en nuestra app.",
         og_siteName: "Find Out Aplication Web",
         twitter_card: "summary_large_image",
